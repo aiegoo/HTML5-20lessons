@@ -1,0 +1,178 @@
+<!--
+Lesson-9
+Accessing the Canvas
+-->
+<DOCTYPE html>
+    <head>
+        <title>
+            Lesson9 -Accessing the Canvas
+        </title>
+    </head>
+    <body>
+<h1> Lesson9 -Accessing the Canvas  </h1>
+<p> You should know JavaScript in order to manipulate canvas.So Let's learn Javascript for manipulating canvas.</p>
+
+<h2> Javascript Concepts for canvas</h2>
+<p> It was created to allow you directly access various parts of HTML DOM. Let look at the example::</p>
+
+<img src="book_image/screenshot1.png">
+<!--
+<html>
+<head>
+    1. title  = <title> example</title>
+    2. meta tag = <meta name='robots' content='index,follow'>
+</head>
+<body>
+    3. Anchor tag = <a href="http://yahoo.com"> Visit Yahoo</a>
+    4. create form having ID, METHOD AND ACTION ATTRIBUTES:
+    <form id='login' method='post' action='form.php'>
+        <input name='name' type='text' value='jane'>
+        <input type='submit'>
+    </form>
+    5.  Image Tag =   <img src="dad.jpg" id='image1'>
+    </body>
+    </html>
+-->
+<p> So, We have following 5 tags in HTML. With this 5 tags we will access the elements from Javascript.</p>
+<ol>
+<li> Title Tag - "example"</li>
+<li> Meta Tag - having name='robots' and content='index,follow'</li>
+<li> Anchor Tag</li>
+<li> Form Tag - having ID, METHOD=POST AND ACTION= form.php</li>
+<li> Image Tag - "dad.jpg"</li>
+</ol>
+
+<h2> Accessing "Form" elements from Javascript</h2>
+<p> so if you want to change the title of URL from title tag, then you can change using javacsript:</p>
+<script>
+document.title ='This is example web page'
+</script>
+<img src="book_image/screenshot2.png">
+<p> Your title is change now. see the magic of Javascript. Now Let's change the method attribute from "post method" to "get method" of form: </p>
+<script>
+document.forms.login.method ='get'
+</script>
+<img src="book_image/screenshot3.png">
+<p> Javascript references first the document, then forms within the document, then the form with id login and its method, which is then modified.</p>
+
+<h2> Accessing the elements using getElementById() function</h2>
+<p> In previous examples, I showed you how to access parts of a document by  their type, but there is far easier method to give every element in a document a unique id, and then to access them from Javascript using just those id's. So let's do it with id's.</p>
+<p> if you want to change the image from dad.jpg to mom.jpg:</p>
+
+<script>
+document.getElementById('image1').src= 'mom.png'
+</script>
+
+<img src="book_image/screenshot4.png">
+
+<p> if you want to change the value of input tag from jane to mike:</p>
+
+<script>
+document.getElementById('name').value ='mike'
+</script>
+
+<img src="book_image/screensot5.png">
+<h2> The Simpler O() function</h2>
+<p> I use getElementById() function so often that i always create a simple function called O() to make it easier ti type in. The function looks like below and simply place it anywhere in a section of Javascript. It saves 22 characters of tying each time the replacement of O() function is used instead of longer one.</p>
+<script>
+O('name').value='mike'
+
+function O(obj)
+{
+    if(typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+}
+</script>
+<img src="book_image/screenshot6.png">
+<ol>
+<li> Instead of directly manipulating the value of the form input with id of name directly, let first create what is called an object from element, like this:: <b> newobject = O('name') </b></li>
+<li> Now , I have an object, I can access it several times without ever having to call the O() function again, like this: <br> <b> newobject.value='mike' <br> newobject.value='fred' </b></li>
+<li> whwnever you wish to refer the element in question, I can simply use the object that I have created.</li>
+</ol>
+
+<h2> The Partner S() function</h2>
+<p> It is used to enable Javascript to easily access any style attribute of any element.</p>
+
+ <!-- <img src="dad.jpg" id="image1">  -->
+<script>
+O('image1').style.width ='150px' // more to type
+S('image1').height ='120px'   // less to type
+
+function O(obj)
+{
+    if(typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+}
+
+function S(obj)
+{
+    return O(obj).style
+}
+</script>
+
+<img src="book_image/screenshot7.png">
+<ol>
+<li> what I have done id simply make the S() function place a call to the O() function but with an added .style suffix and now I can use O() function for accessing the elements by name and S() function for accessing style  attributes of elements by name</li>
+<li> these 2 functions provide huge amount of scopt and power to modify any part of a document.</li>
+<li> Just add O() function and S() function anywhere in javascript any document that will refer to them.</li>
+<li>whenever you need to use these functions, open up a new script tag and access them like this: <br> script tag --open--<b>   <br>
+S('image1').width ='150px' <br> S('image1').height ='120px'
+</b>  <br> script tag --close--</li>
+<li> This works because you are allowed to enter script tags as many as you like in a document--there is no requirement to keep all your Javascript code within a single set of script tags although you may do so if you wish.</li>
+<li> If you would like to create an object on a first call to the O() function, then reference that instead, the preceding code might look like this <br>  script tag -----open------ <br> <b> myimage = O('image1') <br> S('image1').width= '150px' <br> S('image1').height= '120px'</b> <br>  script tag -----close-----</li>
+</ol>
+
+<h2>  Canvas Tag</h2>
+<p> Creating a canvas:</p>
+<canvas id='canvas1' width='400' height='300'>
+The canvas tag support only 2 attributes - width and height.It is important to give unique identifier to canvas.It will ignore by all HTML5 compatiable broswers and so is displayed by browsers that donot recognize it.</canvas>
+<script>
+canvas = O('canvas1')  // create object by passing id of canvas to O() function
+S(canvas).background ='#ddd' // it passes to S() function then set the background property to light gray color
+context = canvas.getContext('2d')// to able to read and write to the canvas, a context is created with which to access it, using javascript getContext() function, which is told to treat this context as 2-dimentional workspace
+context.fillRect(150,100,100,100)// this context to filled rectangle at an offset of 150 pixels horizontally.
+function O(obj)
+{
+    if(typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+}
+function S(obj)
+{
+    return O(obj).style
+}
+</script>
+<img src="book_image/screenshot8.png">
+<img src="book_image/screenshot9.png">
+
+<h2> Converting Canvas to an Image</h2>
+
+<canvas id='canvas1' width='400' height='300'> </canvas>
+<img id='image'>
+<script>
+canvas = O('canvas1')
+S(canvas).background ='#ddd'
+context = canvas.getContext('2d')
+context.fillRect(150,100,100,100)
+O('image').src= canvas.toDataURL()// extracts the image data from the canvas referred to by canvas object and returns a string of text in which the canvas has been encoded as a displayable image which is interpreted by browser and recontructed into an image.
+</script>
+<img src="book_image/screenshot10.png">
+
+<h2> The imagetype Argument</h2>
+<p> when an image is created from a canvas, you can choose the type of the image to use between a jpeg and png image using imagetype argument.</p>
+<img src="book_image/screenshot11.png">
+
+<!--
+    both are identical in result
+ O('image').src= canvas.toDataURL()
+ O('image').src= canvas.toDataURL('image/png')
+-->
+
+<p> You can also use code such as following three examples  which create a very low-quality, medium quality and very high quality image by passing an additional argument containing a value between 0(low quality) and 1(high quality)</p>
+<img src="book_image/screenshot12.png">
+
+<!--
+O('image').src= canvas.toDataURL('image/png',0)
+O('image').src= canvas.toDataURL('image/png',0.5)
+O('image').src= canvas.toDataURL('image/png',1)
+-->
+    </body>

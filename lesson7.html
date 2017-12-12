@@ -1,0 +1,243 @@
+<!--
+Lesson-7
+ Using the remaining HTML4 Tags
+-->
+<DOCTYPE html>
+    <head>
+        <title>
+            Lesson7 - Using the remaining HTML4 Tags
+        </title>
+    </head>
+    <body>
+        <h1> Lesson7 - Using the remaining HTML4 Tags</h1>
+<h2> Conditional HTML for Internet Explorer</h2>
+ <p>you can use IE conditional comments by inserting a pair of square brackets immediately following the opening comment marker, placing an if statement inside. </p>
+
+<!--[if IE 6]>
+    you are using IE6
+    <![endif]-->
+<h2> Simple Comparisons</h2>
+<p> IE constant is tested to see whether it has a value of 6, indicating that the current browser is IE6. you can also simply test for browser being any version of IE by leaving out the numeric value.</p>
+<!--[if IE]>
+    you are using an Internet Explorer browser
+    <![endif]-->
+<h2> Higher or Lower Values</h2>
+<p> if you wish to display some HTML only to versions of Internet Explorer prior to version 9, you can use this form of conditional HTML. lt for less than , lte for less than equal to, gt for greater than, gte for greater than equal to. </p>
+<!--[if lt IE 9]>
+    you are using IE 5,6,7 or 8
+    <![endif]-->
+    </body>
+    <h2>The NOT operator</h2>
+    <p> you can also test the inverse of a comparison using the not operator(!), which displays the contents only if the browser is Internet Explorer , but not version 6</p>
+    <!--[if !(IE 6)]>
+    you are using an Internet Explorer, nut not IE6
+    <![endif]-->
+    <h2>The Mark of the Web</h2>
+    <p>Internet Explorer also uses comments to stamp what it calls the Mark of the Web onto an HTML document, as a way of setting the security zone to which a document applies during the development.
+        <!-- saved from url=(0016)http://localhost -->
+        <!-- saved from url=(0014)about:internet -->
+<h2> abbr tag</h2>
+<p> This tag states that the content is an abbrevation. Users can see an explanation when they pass the mouse over it.</p>
+<abbr title='Sound Navigation And Ranging'> Navigation</abbr>
+<h2> acronym tag (obsolete in HTML5). better to use abbr tag instead. it works exactly the same way</h2>
+<h2>addrress tag</h2>
+<p> This element denotes the contents as containing address data. It is helpful to specialized HTML readers and search web crawlers.
+</p>
+<address>
+1600 Pennsylvania Ave NW
+Wanhington
+DC 20500
+United States
+</address>
+<h2> applet tag (obsolete)</h2>
+<p> This element used to be one way  you could load an external app into a document, but it is now obsolete and you should used object tag  instead</p>
+<h2> area tag</h2>
+<p>This element creates an area within image map, which can then be styled with CSS or have a hyperlink attached. To use it, you must first load in an image to use as a map.</p>
+<img src='book_image/face.jpg' width='250' height='320' usemap='#facemap'>
+<p> with the image loaded, you can use map tag to create an image map and then place one or more area tag inside it to define area you want</p>
+<map name='facemap'>
+<area shape='rect' title='Hair' coords='25, 10,225,130'>
+<area shape='rect' title='Ear' coords='20, 130,50,200'>
+
+<area shape='rect' title='Ear' coords='200, 130,225,200'>
+
+<area shape='circle' title='Eye' coords=' 88,145, 15   ' href='lesson6.html'>
+
+<area shape='circle' title='Eye' coords=' 160,145, 15   ' >
+
+<area shape='rect' title='Nose' coords='100,150,145,205'>
+<area shape='poly' title='Mouth' coords='95,230,110,220,130,220,150,230,135,240,110,240'>
+</map>
+
+<h2> Base Tag</h2>
+<p>Use this tag to specify the base destination for all URLs in a document. for example- if you wish all relative links in a document to refer to the base URL https://mywebsite.com/project/ even if the document is located else where ont he internet.</p>
+<base href='https://mywebsite.com/project'></base>
+<p> now, any hyperlink that are relative will be applied to that base. for example the following will now link to https://mywebsite.com/project/. It will work if you serve the current document from a local file system or from anywhere else making this a great way to handle documents that have to be relocated away from their original location for some reason.</p>
+<a href="news.html">News</a>
+<h2>basefont tag (obsolete)</h2>
+<p> with this tag, you used to be able to set the default font,color and size, but it is now obsolete and instead, you are recommended, you are recommended to use CSS, like for example which sets 12-point text in a blue Arial font.
+style
+.mystyle {
+font-family: Arial;
+font-size:12pt;
+color:blue;
+/style
+
+and you can use the mystyle class like this:
+<span class='mystyle'>some text</span>
+
+to assign a CSS to all elements in a documents body, you can apply a rule to the body.
+
+style
+body {
+    font-family:Arial;
+    font-size: 12pt;
+    color: blue;
+}
+/style
+</p>
+
+<h2> bdo tag</h2>
+<p> with this tag, you can change the direction in which text flows. it takes  2 values - ltr(default) - from left to right and rtl from right to left for displaying some languages such a s Arabic</p>
+<bdo dir='rtl'>Mary had a little lamb</bdo>
+
+<h2> big tag (obsolete in HTML5) and  small tag</h2>
+<p> The Big element enlarge the size of text.Better to use CSS to achieve the same effect.
+.big { font-size: 200%}
+
+use the big class like this:
+<span class='big'>Big text</span> normal again
+
+similarly with small tag:
+
+.small { font-size: 50%}
+
+use the big class like this:
+<span class='small'>Small text</span> normal again
+</p>
+
+<h2> Blockquote tag</h2>
+
+<p> you can specify a large section of text to be a quotation from another source</p>
+<blockquote>
+    To be a champion, I think you have to see the big picture. It's not about winning and losing; it's about every day hard work and about thriving on a challenge. It's about embracing the pain that you'll experience at the end of a race and not being afraid. I think people think too hard and get afraid of a certain challenge.
+</blockquote>
+<p> to define shorter quotation you can use q tag:</p>
+<q>  But man is not made for defeat. A man can be destroyed but not defeated.</q>
+
+<h2> Center Tag (obsolete in HTML5)</h2>
+<p> This Tag was used to align text to the center of the browser.
+.center {
+display: block;
+margin: auto;
+text-align: center;
+}
+
+this works because it forces elements to which it is applied to display as block elements, before setting the text alignment to centered. once the class has been created, just apply it to your html. <br>
+<span class='center'> this is centered text </span>
+</p>
+
+<h2> cite tag</h2>
+<p> you can provide citation for a section of text using this tag.</p>
+<cite> Yesterday</cite> by the Beatles. Recorded in 1965.
+
+<h2> code tag</h2>
+<p> when you wish to display some text as if it is programming code.</p>
+<code>
+var n=1
+search: while (true) {
+n+=1
+for(var i=2;i <=Math.sqrt(n); i+=1)
+if (n % i == 0) continue search;
+postMessage(n);
+}
+</code>
+
+<p> <b>Using pre tag : </b> </p>
+<pre>
+var n=1
+search: while (true) {
+n+=1
+for(var i=2;i <=Math.sqrt(n); i+=1)
+if (n % i == 0) continue search;
+postMessage(n);
+}
+</pre>
+<h2> col tag and colgroup tag (table with colored columns)</h2>
+<table>
+<caption><i> Weight Loss</i></caption>
+<colgroup>
+<col style="background-color:#eee;">
+<col style="background-color:#ddd;">
+</colgroup>
+<tr>
+<th> Month</th>
+<th> Weight</th>
+</tr>
+<tr>
+<td> January</td>
+<td> 180 pounds </td>
+</tr>
+</table>
+
+<h2> del tag</h2>
+I was <del> pleased</del> <ins> delighted</ins> to meet her!
+
+<h2> fieldset tag </h2>
+<form>
+<fieldset>
+<legend> Youe Name</legend>
+FirstName: <input type='text' name='fname'>
+LastName: <input type='text' name='lname'>
+</fieldset>
+Email: <input type='text' name='email'>
+<input type='submit'>
+</form>
+
+<h2> font tag (obsolete in HTML5) better to use with CSS like big tag</h2>
+<!--
+    style
+.offer {
+font-family: 'Arial';
+font-size:12pt;
+color: green;
+}
+/style
+
+yoy can use offer class like this:
+<span class='offer'> special offer </span>
+-->
+<h2> frameset (obsolete)</h2>
+<h2> hr tag </h2>
+<hr>
+<hr width='75%'>
+<hr width='100'>
+
+
+<h2> iframe tag</h2>
+google website
+<iframe src="https://www.google.com/" width='300' height='150'>
+</iframe> google website
+
+<h2> isindex tag (obsolete in HTML5)</h2>
+<p> this tag provides a single line text input that would be sent to the server for returning a list of pages matching the query.</p>
+<h2> menu tag (reserved), deprecated in HTML4</h2>
+<h2> optgroup tag</h2>
+<p> when you wish to create groups of options within a select element, you use the optgroup tag</p>
+<select>
+<optgroup label="Fruit">
+<option value="Apple">Apple</option>
+<option value="Banana">Banana</option>
+<option value="Pear">Pear</option>
+</optgroup>
+<optgroup label="Vegetable">
+<option value="Cabbage">Cabbage</option>
+<option value="Carrot">Carrot</option>
+<option value="Peas">Peas</option>
+</optgroup>
+</select>
+
+<h2> sub Tag and sup Tag</h2>
+Glucose has the formula C<sub>6</sub>H <sub>12</sub>O <sub>6</sub> <br>
+My birthday is on May 2 <sup>nd</sup>
+</body>

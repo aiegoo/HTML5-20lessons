@@ -1,0 +1,119 @@
+<!--
+Lesson-6
+ Links, Forms and Frames
+-->
+<DOCTYPE html>
+    <head>
+        <title>
+            Lesson6 links, Forms and Frames
+        </title>
+    </head>
+    <body>
+        <!-- the below line is the part of (create an anchor session) -->
+<a id="top"> Jump to Top  </a>
+<h1> Lesson -6  Links , Forms and Frames</h1>
+
+<h2> Using hyperlinks</h2>
+<p>
+To create a link to another document , you must first know where this new document resides , whether it is on the local server or another one.An external web address uses what is known
+    as an absolute URL which usually begins with https://. <br>
+http://bbc.co.uk  (simple URL) <br>
+https://bbc.co.uk/weather/  (include folder structure within webpage resides which accesses the folder /weather) <br>
+http://www.bbc.co.uk  (some server add prefix before the domain name, the most common of which is www) <br>
+http://news.bbc.co.uk  (some servers may use prefixes such as news) <br>
+</p>
+<h2> The Query String</h2>
+<p>Many websites support the use of a query string, which is a string of data placed after the URL to provide additional information to a web server. <br>
+    for example: <b>https://google.com/search?q=html5
+</b> <br>
+URL passes the value html5 to the field name q on Google search page.Query String begin with a ? character, followed by a field if preceded by a & character, like this: <br> <b> https://google.com/search?q=html5&h1=fr </b>
+
+here field name h1 is set to the value fr.
+
+<h2> Relative URLs</h2>
+<p>
+when documents reside on the current server, you can access then more easily and make them more portable by using relative instead of absolute URLs.  <br>
+for example: if you need to link to the file agenda.htm in the current folder, you can simply use its name as URL : agenda.htm.
+<br> if the document is in the subfolder mettings, you can refer to it like this: meetings/agenda.htm. <br> if the file is in parent folder of the current one, you can use specail notation:
+../agenda.htm.  <br> finally , if you refer to root folder of current drive or web location use / symbol. -> /agenda.htm.
+</p>
+<h2>Creating Links</h2>
+
+to create a link use anchor tag <a> and suppy a value to an attribute called href like this: <br>
+<a href='http://google.com'>Visit Google </a>  <br>
+ OR  if linking through file like lesson4 from current folder:
+ <a href='lesson4.html'> Lesson4 exercise </a>
+<!--
+<h2> URL in Images</h2>
+Displaying the images in different locations/places:
+<img src='image.jpg'>
+<img src='meetings/image.jpg'>
+<img src='../image.jpg'>
+<img src='../misc/image.jpg'>
+<img src='/image.jpg'>
+<img src='http://aserver.com/folder/extra/image.jpg'>
+-->
+<h2> The target attribute</h2>
+if you would like a web page to open in a new blank window , you can add the specifier target='_blank' like this :<br>
+<a href='http://google.com' target='_blank'> Visit Google </a>
+
+<!-- there are 3 other reserved words:
+    _self: to replace the current page(default),
+    _parent: to replace the parent page or frame,
+    _top: to ignore any and all frames and replace the entire contents of the current browser window with the new document.
+-->
+<h2>Creating an Anchor</h2>
+
+<p> It is possible to link to a section of a web page by first specifying an anchor using id attribute of anchor tag. and then link to that section of the web page refering to anchor id preceded by # symbol.</p>
+<a href='#top'>jump to first line of document  </a>
+
+<!-- *****************************************************
+***********************************************************************************************************************  -->
+
+<h2> Building Forms</h2>
+
+<!--Web forms are the means with which you can request input from the user of the web page.
+-->
+<h4> A range of form elements all incorporated into a single form:</h4>
+<!-- if method is post , data is sent to the seb server invisibly, but when using get method , data is appended to am HTML request ina query string. -->
+<form method="post" action="">
+    <pre>
+        input type: text <input type="text" name="f1" size="26">
+        input type: password <input type="password" name="f2" size="26">
+        input type:radio <input type="radio" name="f3" value='1'>1
+        input type: radio <input type='radio' name='f3' value='2'> 2
+        input type: checkbox <input type='checkbox' name='f4' value='1'>1
+        input type: checkbox <input type='checkbox' name='f4' value='2'>2
+
+        input type:hidden <input type="hidden" name='f5'>
+
+        Select: <select name='f7'>
+                      <option value='1'>first option</option>
+                      <option value='2' selected='selected'>second option</option>
+                      <option value='3'>third option</option>
+               </select>
+        Button:  <button name='f8' value='f8'>Button</button>
+        Label: <label>
+                  <input type='checkbox' name='agree' value='yes'> I agree
+                </label>
+         Input type: submit <input type='submit'>
+          Textarea: <textarea name="summary" rows='5' cols='30'> Textarea of 5 rows and 30 columns. you can write more lines in the textarea </textarea>
+          </pre>
+</form>
+<h2> Frames and Iframes</h2>
+<!-- you can embed entire web pages within other pages. first way to do this and the least recommended is to use frames to split a web page into the multiple parts and then place them all in frames within the <frameset> tag (obsolete in HTML5).
+-->
+<frameset rows='20%, *, 20%'>
+<frame src='lesson2.html'>
+<frame src='lesson3.html'>
+<frame src='lesson4.html'>
+</frameset>
+<noframes>
+<!-- Alternative content goes here -->
+</noframes>
+
+<h4> iframes example- width-640  height - 300 source- lesson4.html</h4>
+<!-- some HTML content here -->
+<iframe src="lesson4.html" width='640' height='300'></iframe>
+<!-- some HTML content here -->
+    </body>

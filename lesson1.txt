@@ -1,0 +1,16 @@
+Lesson-1
+
+An Introduction to HTML
+
+What is HTML:
+* HTML stands for-Hyper Text Markup Language
+* invented by Sir Timothy Berners-Lee in the early 1990s to solve the problem of quixkly and efficiently distributing documents between scientists around he world who were working with experimenters at CERN
+
+USES:
+* Any computer to stay in touch with each other, a click away.
+* People all over the world could connect to a local Internet host and immediately be in touch with any person logged in to any web-connected computer.
+
+
+HTTP AND HTML BASICS:
+
+1. HTTP- It is the communication standard used for controlling the requests and responses that occur between a web browser running on your computer and a web server, and stands for hyperText Transfer Protocol.

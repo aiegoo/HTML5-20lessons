@@ -1,0 +1,55 @@
+<!-- Lesson 2
+    The Layout of an HTML Document
+
+    This lesson includes:
+    DOCTYPE, headers, scripts, CSS, meta tags and the body.
+-->
+
+<!-- 1. DOCTYPE - all well formatted HTML pages begin with a line that tells the browser information about the type of content to expect this line is called <!DOCTYPE> declaration along with some arguments if the version of HTML used is less than 5.
+-->
+<DOCTYPE html>
+
+<!-- 2. HTML tag - this tag notifies the web browser that a section of HTML follows
+*-->
+<html>
+
+<!-- 3. head tag - it indicates that the HTML within it and its closing /head tag contains further information about the document such as title, metadata, stylesheets and Javascript.
+-->
+<head>
+    <!-- 4. title - the title will appear at the top of the browser
+    in the title bar and will be used by search enginees such as Google for indexing your website.
+    -->
+    <title> Welcome to my website </title>
+    <!-- 5. Including Style Sheets(CSS) - they are set of rules used to describe the layout and presentation of an HTML document, which are kept separately from the content.
+    -->
+    <script>
+    h1 {
+        color:red;
+    }
+    </script>
+    <!-- 6. Incorporating JavaScript - Javascript is included within a web page by either including a section within script and /script tags or by adding an src attribute to the script tag to load in an external file.
+    -->
+    <script>
+    alert("This is a Javascript pop-up alert");
+    </script>
+    <!-- if scripts are longer than a few lines, they will often be saved as external files that are then loaded in as follows:
+    -->
+    <script src='ProgramCode.js'></script>
+    <!-- 7. Passing Metadata -  it provides additional information to an HTML document that the browser can use. Such data is sent using the meta tag. for example- you can tell the browser to exchange the current page for another one after a set length of time:-
+    -->
+    <meta http-equiv='refresh' content =' 10, url=htps://otherwise.com'>
+    <!-- which states that after 10 seconds the web page at http:// otherwise.com should replace the current one.
+
+    another usage of meta tag: setting the width of the document for portable browsing hardware such as phones and tablets.this is done using view port value.
+    -->
+    <meta name='viewport' content='width=960'>
+    <meta name='description' content='Description of web page'>
+
+    <!-- 8. Body tag: you place the contents of an HTML insisde the body tag.
+    -->
+    <body>
+        <h2> Lesson 2 - The Layout of an HTML Document</h2>
+        this is the body of the document
+    </body>
+
+</head>

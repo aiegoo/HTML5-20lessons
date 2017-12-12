@@ -1,0 +1,104 @@
+<!--
+Lesson-8
+What's New in HTML5
+-->
+<DOCTYPE html>
+    <head>
+        <title>
+            Lesson8 - What's New in HTML5
+        </title>
+    </head>
+    <body>
+        <h1>  Lesson8 - What's New in HTML5 </h1>
+        <h2> 1. Canvas Tag</h2>
+        <p> The canvas element is introduced by Apple to provide a means of drawing garphics from within a web page, without having a load a plug-in such as Java or Flash.Later Adopted by Opera and Gecko-based Browsers.</p>
+<p>
+    A canvas is a region within web page that can be drawn on using JavaScript. As there can be more canvas in a web page, it is necessary to provide an ID for each so that the drawing commands know which canvas they should apply to. so to create a canvas, you use HTML :
+</p>
+<!--  it creates the canvas -->
+<canvas id='canvas1' width='400' height='300'>
+A canvas is a region within web page that can be drawn on using JavaScript. As there can be more canvas in a web page, it is necessary to provide an ID for each so that the drawing commands know which canvas they should apply to.</canvas>
+
+
+<p> great thing in HTML5 canvas is that you can now draw anything you like in a web browser, using plug-in such as Flash but using simple HTML and Javascript syntax. This makes your web pages far more dynamic and able to display on a wider range of operating systems and devices.</p>
+
+<h2> 2. Geolocation </h2>
+<ul>
+    <li> it is technology that is used to determine the location of a computer or mobile devices, which can be returned to the web server in order to provide relevant information.
+</li>
+
+<li> a local map can be displayed, or details of local  stores such as restaurants or gas stations can be provided.</li>
+<li> used to help improve web connectivity by notifying you of nearby wifi access points.</li>
+<li> different methods are used to obtain location starting with IP address</li>
+<li> With HTML5 geolocation, if WIFI is enabled on your computer, it is also possible to send more precise location information by scanning your locally accessible WIFI hostpots to pinpoint the location</li>
+<li> if your computer has GPS functionality, this can reveal your exact location to within just a few feet, as long as your device is in range of the GPS satellites that orbit the earth</li>
+</ul>
+<h2> 3. Forms</h2>
+<ul>
+<li>  Forms have been provided  with a number of new enhancements in HTML5</li>
+<li> you can place  input tag outside of form  and /form tags as long as the new form attribute is used to identify the form ID to which the input refers.</li>
+<li> you can change the method- get or post of the form with new formmethod attribute.</li>
+<li> you can chnage encoding type of a form or create or override the new formnovalidate attribute.</li>
+<li> you can also use formaction attribute to change the action of the form</li>
+<li> you can use the formtarget attribute to change the target frame, tab or window.</li>
+<li> you can change the width and height of image type of input tag using height and width attributes.</li>
+<li> Data Lists can also be included in a form so that you can create a list of labels  and values to which you assign an ID.Then you can use that ID as a value for the new list attribute to easily offer a selection of choices to an input.</li>
+<li> New min, max and step attributes have also been added for inputs that contains numbers or dates, and there's new multiple attribute with which you can allow an input tag to accept multiple values.</li>
+<li> Pattern matching is supported in forms</li>
+<li> several new values are now supported for the type attribute, including color, date, month, time,week,number,range,tel,url and email.</li>
+</ul>
+<h2> 4. Local Storage</h2>
+<ul>
+<li> Large chunks of data (up to 5MB per website) can be stored locally , but only if the user agree to it, so you can retain full control</li>
+<li> on some browsers , loacl storage accessed like a databse using web SQL, poviding the possibility of creating advanced  a local web apps for handling  data such as your music collecttion or personal exercising and dieting</li>
+</ul>
+
+<h2> 5. Audio and Video</h2>
+<ul>
+    <li>  Ability to play audio and video directly from within HTML, with no need to embed Flash or any other type of object as a player</li>
+<li> New tags audio and video have been provided, but how to use them is still a bit up in the air as it can depend on the browser and OS being used.</li>
+</ul>
+<h2> 6. embed Tag</h2>
+<ul>
+<li> While on the subject of embedding objects in a web page, the embed tag now has been restored and made official again</li>
+</ul>
+<object width='480' height='385'>
+<param name="movie" value="http://www.youtube.com/v/sNdjul1fELI">
+<param name="allowFullScreen" value="true">
+<param name="allowscriptaccess" value="always">
+<embed src=http://www.youtube.com/v/sNdjul1fELI type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385" >
+</object>
+
+<h2> 7. Microdata</h2>
+<p> It is subset of HTML designed for making a document have meaning to machines by providing metadata. just as it has meaning to a reader of the document.</p>
+<ul>
+<li> new tag attributes: itemscope,itemtype,itemid,itemref and itemprop</li>
+<li>Using them you can able to clearly  define the properties of the item such as book, providing the range of information that computer can use to understand  for example- authors, publishers, contents and so on.</li>
+</ul>
+
+<h2> 8. Web Workers</h2>
+<ul>
+<li>provide standard way for browser to run multiple Javascipt threads in background that can messsages to each other</li>
+<li>you can simply call up a new worker script, which will sit there in the background waiting for messages to be sent to it which it will then act upon</li>
+</ul>
+
+<h2> 9. Web Applications</h2>
+<h2> 10. Still to Come</h2>
+<p> These tag are : article, aside, details, figcaption, figure, footer, header, hgroup, keygen, mark, menuitem, meter, nav, output, progress,rp,rt, ruby, section, summary, time, wbr.</p>
+<!--  below 4 lines within script do the work of placing the square on the canvas.  -->
+<script>
+/* it creates Javascript object which refers to canvas1 canvas.    */
+canvas = document.getElementById('canvas1')
+/* set the background color of canvas to gray  */
+canvas.style.backgroung ='#ddd'
+/*  access the canvas using 2D  */
+context = canvas.getContext('2d')
+/*  sqaure is drawn on the canvas by using the context and Javascript function fillRect()      */
+context.fillRect(150,100,100,100)
+context.arc(60, 60, 50, 0, Math.PI * 2, false)
+context.stroke()
+context.font='70px Times'
+context.fillText('Hi', 300, 280, 100)
+</script>
+
+   </body>

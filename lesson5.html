@@ -1,0 +1,230 @@
+<!--
+Lesson-5
+ Creating Lists and Tables
+-->
+<DOCTYPE html>
+    <head>
+        <title>
+            Lesson5 Creating Lists and Tables
+        </title>
+    </head>
+    <body>
+        <h1> Building Lists</h1>
+<!-- 1. Building Lists: types of lists-
+      numbered lists is also known as ordered lists
+      list item can be denoted with letters of alphabet or roman numerals as well as with numbers
+      and bulleted lists can use squares or filled or underlined circles
+-->
+<h2> Ordered Lists</h2>
+<ol>
+    <li> Apple</li>
+    <li> Pear </li>
+    <li> Banana </li>
+    <li> Plum</li>
+</ol>
+<h2> Unordered Lists</h2>
+<ul>
+<li> Apple</li>
+<li> Banana </li>
+<li> Plum</li>
+<li> Orange</li>
+</ul>
+<h2> Lists may also contains sublists</h2>
+
+<ul>
+<li> Apple
+<ul>
+<li> Bramley</li>
+<li> Cox</li>
+<li> Golden Delecious </li>
+</ul>
+</li>
+</ul>
+
+<h2> Overriding the defaults</h2>
+<!-- start -by default the list start with 1.
+    type- unordered lists require any of three words as values for this attribute, out of  disc, square and circle.
+-->
+<h2> Example 1 - type-square</h2>
+<ul type='square'>
+    <li> Apple</li>
+    <li> Banana</li>
+    <li> Orange</li>
+</ul>
+<h2> Example 2 - type- I</h2>
+<ol type='I'>
+    <li> Apple</li>
+    <li> Banana</li>
+    <li> Orange</li>
+</ol>
+<h2> Example 3 - start from 5</h2>
+<ol start='5'>
+    <li> Apple</li>
+    <li> Banana</li>
+    <li> Orange</li>
+</ol>
+
+<h2> Definition Lists</h2>
+<!-- this type os lists is used in places where it is not appropriate to use either ordered or bulleted lists -->
+<dl>
+<dt>HTML</dt>
+<dd> stands for Hyper text  marup language</dd>
+<dt> CSS</dt>
+<dd> stands for cascading style sheets</dd>
+<dt> Javascript</dt>
+<dd> an in -browser programming language</dd>
+</dl>
+
+<h1> Creating Tables</h1>
+<!-- cellpadding= this attribute specifies the number of pixels space between cell walls and their content which can be a value of 0 or any higher number.
+    cellspacing= this attribute specifies the number of pixels space between cells and outer table border.
+-->
+<h2> table rows and columns(also contains table attributes : border, bordercolor, cellpadding,cellspacing,width and height of table)</h2>
+<table border='1' bordercolor='blue' bgcolor='cyan' width='450' height='200' cellpadding= '9' cellspacing='15'>
+    <tr>
+         <td> Row 1, Col 1</td>
+         <td> Row 1 ,col 2</td>
+         <td> Row 1, Col 3</td>
+    </tr>
+    <tr>
+         <td> Row 2, Col 1</td>
+         <td> Row 2 ,col 2</td>
+         <td> Row 2, Col 3</td>
+    </tr>
+
+    </table>
+<h2> setting the table row (tr) in different colors using bgcolor attribute  (tr bgcolor='red') </h2>
+    <table border='1' bordercolor='blue' bgcolor='gray' width='450' height='200' cellpadding= '3' cellspacing='5'>
+    <tr bgcolor='red'>
+         <td> Row 1, Col 1</td>
+         <td> Row 1 ,col 2</td>
+         <td> Row 1, Col 3</td>
+    </tr>
+    <tr bgcolor='yellow'>
+         <td> Row 2, Col 1</td>
+         <td> Row 2 ,col 2</td>
+         <td> Row 2, Col 3</td>
+    </tr>
+    </table>
+
+<h2> Table Headers</h2>
+<table border='1' bordercolor='blue' bgcolor='pink' width='450' height='200' cellpadding= '2' cellspacing='2'>
+    <tr>
+        <th> Heading 1</th>
+         <th> Heading 2</th>
+          <th> Heading 3</th>
+    </tr>
+    <tr bgcolor='red'>
+         <td> Row 1, Col 1</td>
+         <td> Row 1 ,col 2</td>
+         <td> Row 1, Col 3</td>
+    </tr>
+    <tr bgcolor='yellow'>
+         <td> Row 2, Col 1</td>
+         <td> Row 2 ,col 2</td>
+         <td> Row 2, Col 3</td>
+    </tr>
+    </table>
+    <h2> Caption Tag example </h2>
+    <table border='2' bordercolor='blue' bgcolor='pink' width='250'  cellpadding= '5' cellspacing='1'>
+        <caption>
+            <i> Browser Share Spring 2014</i>
+        </caption>
+    <tr>
+        <th> Browser</th>
+         <th> Share</th>
+    </tr>
+    <tr>
+         <td> Google Chrome</td>
+         <td> 44%</td>
+    </tr>
+    <tr>
+         <td> Internet Explorer</td>
+         <td> 23%</td>
+    </tr>
+    <tr>
+         <td> Apple Safari</td>
+         <td> 9%</td>
+    </tr>
+    <tr>
+         <td> Opera</td>
+         <td> 1%</td>
+    </tr>
+    </table>
+<h2> merging 2 cells using colspan attribute</h2>
+
+<table border='1' width='450'  height='200'>
+    <tr align='center'>
+         <td width='25%'>1</td>
+         <td width='25%'>2</td>
+         <td width='25%'>3</td>
+         <td width='25%'>4</td>
+    </tr>
+    <tr align='center'>
+         <td>5</td>
+         <td>6</td>
+         <td>7</td>
+         <td>8</td>
+    </tr>
+    <tr align='center'>
+         <td>9</td>
+         <td>10</td>
+         <td colspan='2' bgcolor='lightgray'> </td>
+         <!-- cell omitted here -->
+
+    </tr>
+
+</table>
+<h2> merging 2 rows using rowspan attribute</h2>
+
+<table border='1' width='450'  height='200'>
+    <tr align='center'>
+         <td width='25%'>1</td>
+         <td width='25%'>4</td>
+         <td width='25%'>7</td>
+         <td width='25%'>10</td>
+    </tr>
+    <tr align='center'>
+         <td>2</td>
+         <td>5</td>
+         <td>8</td>
+         <td rowspan='2' bgcolor='lightgray'></td>
+    </tr>
+    <tr align='center'>
+         <td>3</td>
+         <td>6</td>
+         <td>9</td>
+         <!-- cell omitted here -->
+
+    </tr>
+
+</table>
+<h2> combination of rowspan and colspan example</h2>
+<table border='1' width='450'  height='200'>
+    <tr align='center'>
+         <td width='25%'>1</td>
+         <td width='25%'>2</td>
+         <td width='25%'>3</td>
+         <td width='25%'>4</td>
+    </tr>
+    <tr align='center'>
+         <td>5</td>
+         <td colspan='2' rowspan='2' bgcolor='lightgray'></td>
+         <!-- cell omitted here -->
+         <td>6</td>
+    </tr>
+    <tr align='center'>
+         <td>7</td>
+         <!-- cell omitted here -->
+         <!-- cell omitted here -->
+         <td>8</td>
+    </tr>
+     <tr align='center'>
+         <td>9</td>
+         <td>10</td>
+         <td>11</td>
+         <td>12</td>
+    </tr>
+
+</table>
+    </body>

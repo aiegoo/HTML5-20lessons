@@ -1,0 +1,98 @@
+<!--
+Lesson-4
+Fonts, Colors and Images
+
+this lesson includes font face and size of any text, how to add coloring to the text foreground or background, how to load and display images in a document.
+-->
+<DOCTYPE html>
+    <head>
+        <title>
+            Lesson4 - Fonts , Colors and Images
+        </title>
+    </head>
+    <!-- you can change the default background color of a web page by specifying your choice of color as an attribute to the body tag-->
+    <body bgcolor='gray'>
+        <h1> Lesson-4 - Fonts, Colors and Images</h1>
+        <h2> Body Background color</h2>
+        <!-- 1. Changing Font Face and Color:
+        so this covers 3 things:
+        <font color='.....'> ..........</font>
+        <font face='.....'> ..........</font>
+        <font size='.....'> ..........</font>
+        -->
+        <h2> Font Tag - color , size and   face</h2>
+        <font color='red'> This is red text</font> <br>
+        <font face='Arial'>This is in arial font</font>  <br>
+        <font size='5'> this is font size</font>  <br>
+        <font color='blue' face='Arial' size='7'> this is blue size 7 text in Arial font</font>
+
+<!--  <basefont> :  you can use the global tag <basefont> which has same attributes as the <font> tag but it is used to change the default font values for an entire document.
+-->
+
+<!-- 2. The Named Colors :all browsers support 16 main color names for color attribute values. modern browser support 147 color names but those names are not part of HTML standard. for example:
+    <body bgcolor='lightgreen'>
+    <font color='darkblue'>
+some of the values are in hexadecimal for example:
+ color - aqua
+ value- #00FFFF
+
+ 3. Coloring by Numbers: instead of providing color names to HTML tags, you can be more precise by passing numeric values instead. for example:
+-->
+<h2> Font coloring with numbers</h2>
+<font color='#FF8800'> this is orange text </font> <br>
+
+<!-- 4. Font faces: there are number of fonts available toa web browser, depending upon the avaibility of fonts in the underlying operating system.as a backup in cases where a computer may not have the Arial font installed, you might choose to ask the browser to choose thr best sans-serif font.
+-->
+<h2> Font Faces types </h2>
+<font face="'Arial', 'sans-serif'"> this is Arial or sans-serif if unavailable </font>  <br>
+<font face="'Times New Roman', 'serif'"> this is Times New Roman or serif if unavailable </font> <br>
+<font face="'Impact', 'fantasy'"> this is Impact or fantasy if unavailable </font> <br>
+<font face="'Georgia', 'serif'"> this is Georgia or serif if unavailable </font> <br>
+<font face="'Verdana', 'sans-serif'"> this is Verdana or sans-serif if unavailable </font> <br>
+<font face="'Arial Black', 'sans-serif'"> this is Arial Black or sans-serif if unavailable </font> <br>
+<font face="'Arial Narrow', 'sans-serif'"> this is Arial Narrow or sans-serif if unavailable </font>  <br>
+<font face="'Times', 'serif'"> this is Times or serif if unavailable </font> <br>
+
+<h2>  Image Tag </h2>
+<!-- 5. Displaying Images: images are easily display on web page. we have 3 image types:
+    .gif= these images are animated but display fewer colors
+    .jpg= jpg images dispaly more colors but employ a lossy compression technique.
+    .png= .png images offer the best of both worlds but can be larger.
+     Image attributes:
+     src: this value tells the browser where to fetch the image from.it is preceded by the string http://  or on thew current website (local disc) and loaded fromt he current folder.
+     alt: provide alternate text describing the image.
+     width and height: if you specify these values in advance, the browser will allocate the space required for the image right away.
+
+     -----------------obsolete from HTML 5----------------------
+     border: using thisa attribute you can specify the width of border to apply to an image.
+     align:you can position an image vertically by aligning it within the current line using any of the values - top, middle, bottom,absmiddle and absbottom.
+     -----------------obsolete from HTML 5----------------------
+-->
+<img src='book_image/front.jpg' border='0' width='200' height='150' alt='image1'>
+<img src='book_image/back.jpg' border='1' width='200' height='150' alt='image2'> <br>
+<img src='book_image/front.jpg' border='5' width='200' height='150' alt='image3'>
+<img src='book_image/back.jpg' border='2' width='200' height='150' alt='image4'> <br>
+
+<h2>example of Image tag - align= left/right , second paragraph begins under image</h2>
+<img src='book_image/front.jpg' width='100' height='80'align='right'>
+<p>To build websites, you should know about HTML — the fundamental technology used to define the structure of a webpage. HTML is used to specify whether your web content should be recognized as a paragraph, list, heading, link, image, multimedia player, form, or one of many other available elements or even a new element that you define. </p> <p>HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects, such as interactive forms, may be embedded into the rendered page. It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items. HTML elements are delineated by tags, written using angle brackets. Tags such as img tag and input tagintroduce content into the page directly. Others such as paragraph tag surround and provide information about document text and may include other tags as sub-elements. Browsers do not display the HTML tags, but use them to interpret the content of the page.
+    </p>
+
+<h2>example of Image tag - clear=left/right, second paragraph will not begins under the image</h2>
+<img src='book_image/front.jpg' width='100' height='70'align='right'>
+<p>To build websites, you should know about HTML — the fundamental technology used to define the structure of a webpage. HTML is used to specify whether your web content should be recognized as a paragraph, list, heading, link, image, multimedia player, form, or one of many other available elements or even a new element that you define.HTML elements are the building blocks of HTML pages.With HTML constructs, images and other objects, such as interactive forms, may be embedded into the rendered page. It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items.
+<br clear='right'></p>
+<p>  HTML elements are delineated by tags, written using angle brackets. Tags such as img tag and input tagintroduce content into the page directly. Others such as paragraph tag surround and provide information about document text and may include other tags as sub-elements. Browsers do not display the HTML tags, but use them to interpret the content of the page.
+    </p>
+
+<h2>example of Image tag - adding border to image and created a 25 pixel blank margin to right of image using CSS declaration, heading to text</h2>
+<h1> All about HTML</h1>
+<img src='book_image/back.jpg' border='1' style='margin-right:25px;' width='100' height='70'align='left'>
+
+<p>To build websites, you should know about HTML — the fundamental technology used to define the structure of a webpage. HTML is used to specify whether your web content should be recognized as a paragraph, list, heading, link, image, multimedia player, form, or one of many other available elements or even a new element that you define.HTML elements are the building blocks of HTML pages.With HTML constructs, images and other objects, such as interactive forms, may be embedded into the rendered page. It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items.
+<br clear='left'></p>
+<p>  HTML elements are delineated by tags, written using angle brackets. Tags such as img tag and input tagintroduce content into the page directly. Others such as paragraph tag surround and provide information about document text and may include other tags as sub-elements. Browsers do not display the HTML tags, but use them to interpret the content of the page.
+    </p>
+
+    <!-- NOTE:  clear attribute is obsolete in HTML5 -->
+    </body>
