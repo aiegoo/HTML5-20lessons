@@ -1,0 +1,261 @@
+<!--
+Lesson-10
+Creating Rectangles, Fills, Gradients and Patterns
+-->
+<DOCTYPE html>
+    <head>
+        <title>
+            Lesson-10
+            Creating Rectangles, Fills, Gradients and Patterns
+        </title>
+    </head>
+    <body>
+<h1> Lesson-10  Creating Rectangles, Fills, Gradients and Patterns  </h1>
+
+<h2> 1. Drawing Rectangles</h2>
+
+<h3> The fillRect() function</h3>
+<ul>
+<li> it takes 4 arguments reprsenting - vertical and horizontal offsets  of the top-left hand corner of a rectangle from the top-left corner of the canvas followed by the rectangle width and height all of which are in units of pixels or one screen dot.</li>
+<li> following syntax create  a filled rectangle 50 pixels wide and 70 pixels high , an offset of 20 pixels in from left egde of canvas (410/170 pixels) and 30 pixels down from top.</li>
+</ul>
+<canvas id='example' width='410' height='170'></canvas>
+<script>
+canvas = O('example')
+S(canvas).background ='#ddd'
+context = canvas.getContext('2d')
+context.fillRect(20,30,50,70)
+
+function O(obj)
+{
+    if(typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+}
+
+function S(obj)
+{
+    return O(obj).style
+}
+</script>
+
+<h3> The fillstyle Property</h3>
+<ul>
+<li>you can set the type of fill color to use using hexadecimal digits</li>
+<li> example1: <b> context.fillStyle = '#F00'</b></li>
+<li> example2: <b> context.fillStyle = 'red'</b></li>
+</ul>
+<canvas id='example1' width='410' height='170'></canvas>
+<script>
+canvas = O('example1')
+S(canvas).background ='#ddd'
+context = canvas.getContext('2d')
+context.fillStyle = '#F00'   // add fillStyle property
+context.fillRect(20,30,50,70)
+
+function O(obj)
+{
+    if(typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+}
+
+function S(obj)
+{
+    return O(obj).style
+}
+</script>
+<h3> The clearRect() function</h3>
+<ul>
+<li>if you want to draw a clear rectangle in which all the RGBA values of pixel are set to zero, you can use clearRect() function.</li>
+<li> example1: <b> context.clearRect(20,30,50,70)</b></li>
+<li> the cleared area is stripped of  all colors, leaving only underlying background color that may be applied to canvas tag.</li>
+</ul>
+<canvas id='example2' width='410' height='170'></canvas>
+<script>
+canvas = O('example2')
+S(canvas).background ='#ddd'
+context = canvas.getContext('2d')
+context.fillStyle = '#F00'   // add fillStyle property
+context.clearRect(20,30,50,70)
+
+function O(obj)
+{
+    if(typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+}
+
+function S(obj)
+{
+    return O(obj).style
+}
+</script>
+<h3> The strokeRect() Function</h3>
+<ul>
+<li> you can create rectangle that uses the current strokeStyle, lineWidth,lineJoin and miterLimit properties to draw the boredr lines and corners </li>
+<li> example: <b> context.strokeRect(20,30,50,70)</b></li>
+</ul>
+<canvas id='example3' width='410' height='170'></canvas>
+<script>
+canvas = O('example3')
+S(canvas).background ='#ddd'
+context = canvas.getContext('2d')
+context.fillStyle = 'blue'
+context.fillRect(10,10,150,150)
+context.clearRect(20,20,130,130)
+context.strokeRect(30,30,110,110)
+
+function O(obj)
+{
+    if(typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+}
+
+function S(obj)
+{
+    return O(obj).style
+}
+</script>
+<h2> 2. Creating Gradients</h2>
+<h3> The createLinearGradient() function</h3>
+<canvas id='example4' width='410' height='170'></canvas>
+<script>
+canvas = O('example4')
+S(canvas).background ='#ddd'
+context = canvas.getContext('2d')
+//create gradient
+gradient = context.createLinearGradient(55, 10, 55, 160)
+gradient.addColorStop(0, '#ffffff')
+gradient.addColorStop(1, '#000000')
+// fill with gradient
+context.fillstyle =gradient
+context.fillRect(10,10,90,150)
+// 2nd rectangle that has to be filled from left to right by choosing the values for the call to createLinearGradient():
+gradient = context.createLinearGradient(110, 85, 200, 85)
+context.fillRect(110,10,90,150)
+// 3rd rectangle
+gradient = context.createLinearGradient(210, 10, 300, 160)
+context.fillRect(210,10,90,150)
+function O(obj)
+{
+    if(typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+}
+
+function S(obj)
+{
+    return O(obj).style
+}
+</script>
+<h4> Example - createLinearGradient() </h4>
+
+<canvas id="lg" width="300" height="150"></canvas>
+<script>
+    var c = document.getElementById("lg");
+    var ctx = c.getContext("2d");
+
+    gradient = ctx.createLinearGradient(0, 0, 0, c.height);
+    gradient.addColorStop(0, '#ffffff');
+    gradient.addColorStop(1, '#000000');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, c.width, c.height);
+</script>
+
+<h4> Example : createLinearGradient() with multiple colors</h4>
+<!--    createLinearGradient example with multiple colors -->
+<br>
+<canvas id="c1" width="300" height="150" style="border:1px solid #000000"></canvas>
+<script>
+    var c = document.getElementById("c1");
+    var ctx = c.getContext("2d");
+
+    var grd=ctx.createLinearGradient(0,0,200,0);
+    grd.addColorStop(0,"red");
+    grd.addColorStop(0.15,"yellow");
+    grd.addColorStop(0.3,"green");
+    grd.addColorStop(0.45,"aqua");
+    grd.addColorStop(0.6,"blue");
+    grd.addColorStop(0.7,"fuchsia");
+    grd.addColorStop(1,"red");
+    // Fill with gradient
+    ctx.fillStyle=grd;
+    ctx.fillRect(10,10,150,80);
+
+</script>
+<!-- **************************************************** -->
+<h3> The create RadialGradient() function</h3>
+
+<canvas id='example5' width='200' height='100' style="border:1px solid #000000"></canvas>
+<script>
+canvas = O('example5')
+S(canvas).background ='#ddd'
+context = canvas.getContext('2d')
+gradient = context.createRadialGradient(75,50,5,90,60,100)
+gradient.addColorStop(0, "red")
+gradient.addColorStop(1, "white")
+// fill with gradient
+context.fillstyle =gradient
+context.fillRect(10,10,150,80)
+
+function O(obj)
+{
+    if(typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+}
+
+function S(obj)
+{
+    return O(obj).style
+}
+</script>
+<h3> The addColorStop()  function</h3>
+
+<canvas id='example6' width='410' height='170'></canvas>
+<script>
+canvas = O('example6')
+S(canvas).background ='#ddd'
+context = canvas.getContext('2d')
+gradient = context.createLinearGradient(50, 10, 55, 160)
+gradient.addColorStop(0.0, "#FFF")
+gradient.addColorStop(0.2, "#555")
+gradient.addColorStop(1.0, "#000")
+// fill with gradient
+context.fillstyle =gradient
+context.fillRect(10,10,90,150)
+
+function O(obj)
+{
+    if(typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+}
+
+function S(obj)
+{
+    return O(obj).style
+}
+</script>
+
+
+<h2> Using Patterns</h2>
+<h3> The createPattern() Function</h3>
+<p> To create a pattern , you need to supply a pre-existing image such as a jpeg,png or gif file, and the type of repetition to use when applying the fill, out of following options:</p>
+<ul>
+<li> repeat = repeat the image both vertically and horizontally</li>
+<li> repeat-x = repeat the image horizontally</li>
+<li>repeat -y = repeat the image vertically</li>
+<li>no-repeat = donot repeat the image</li>
+</ul>
+<b> repeat-y example:  </b> <br>
+<canvas id="myCanvas" width="300" height="300" style="border:1px solid #000000"></canvas>
+<script>
+    var img = new Image();
+    img.src = 'book_image/smiley1.png';
+    img.onload = function () {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = ctx.createPattern(img, 'repeat-y');
+            ctx.fillRect(10, 0, 600, 900);
+
+    };
+
+
+</script>
+</body>
