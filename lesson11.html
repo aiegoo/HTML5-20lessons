@@ -1,0 +1,94 @@
+<!--
+Lesson-11
+Writing Text to the Canvas-->
+<DOCTYPE html>
+    <head>
+        <title>
+            Lesson-11  Writing Text to the Canvas
+        </title>
+    </head>
+    <body>
+<h1> Lesson-11  Writing Text to the Canvas</h1>
+<h2> 1. Writing Text</h2>
+
+<h3> The font Property</h3>
+<ul>
+<li> Example - <b> context.font= '30pt Arial</b></li>
+<li> Font Size Measurement: <br> 1. em- based on default preferences set in the browser <br> 2. ex- X-height: based on height of lowercase x character <br> 3. px- Pixels: based on resolution of screen <br> 4. % - Percentage:based on default preference of the browser </li>
+<li> Fixed Unit are: <br> 1. in- Inches <br> 2. cm - centimeters <br> 3. mm - Millimeters <br> 4. pt- Points: a print unit <br> 5. pc- Picas: Another point unit</li>
+<li> Examples: <br> 1. context.font= '3em Helvetica' <br> 2. context.font= '16px Impact' <br> 3. context.font= '150% Courier' <br> 4. context.font= '10mm Times' <br> 5. context.font= '72pt Arial'</li>
+</ul>
+
+<h3> The Stroke() Function</h3>
+<h3> The textAlign Property</h3>
+<ul>
+<li> Example: context.textAlign='center' <br> context.strokeText('hello',205,120</li>
+</ul>
+<h3> The textBaseline Property</h3>
+<ul>
+<li>you can choose offset(y-value) at which text will be displayed from this location.</li>
+<li> 1. top <br> 2.middle <br> 3. bottom <br> 4. alphabetic <br> 5. hanging <br> 6. ideographic</li>
+</ul>
+
+<!--    CANVAS1 ************************************************* -->
+<canvas id='example1' width='410' height='170'></canvas>
+<script>
+canvas = O('example1')
+S(canvas).background ='#ddd'
+context = canvas.getContext('2d')
+context.font='30pt Arial'
+context.fillText("font-fillText",10,50); // fontText property
+context.textAlign='center'// textAlign Property
+context.strokeText("CENTER",205,120)// strokeText property
+//context.lineWidth =5 // lineWidth Property
+//context.strokeText("linewidth",130,160)
+context.textBaseline='top'
+context.strokeText("top",40,100)
+function O(obj)
+{
+    if(typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+}
+
+function S(obj)
+{
+    return O(obj).style
+}
+</script>
+
+<!-- CANVAS close *****************************************-->
+
+<h3> The fillText Property</h3>
+<!--    CANVAS2 ************************************************* -->
+<canvas id='example2' width='410' height='170'></canvas>
+<script>
+canvas = O('example2')
+S(canvas).background ='#ddd'
+context = canvas.getContext('2d')
+context.font='90pt Impact'
+//gradient = context.createLinearGradient(205,25,205,150)
+//gradient.addColorStop(0, '#ffffff')
+//gradient.addColorStop(1, '#000000')
+//context.fillstyle ='gradient'
+context.fillText("HTML5",10,150); // fillText property
+//metrics= context.measureText('HTML5') // determining text width
+//alert('Text Width:' + metrics.width + 'pixels')
+
+function O(obj)
+{
+    if(typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+}
+
+function S(obj)
+{
+    return O(obj).style
+}
+</script>
+
+<!-- CANVAS close *****************************************-->
+
+<h3> Determining Text Width</h3>
+<ul>
+<li> metrics= context.measureText('HTML5') <br> alert('Text Width:' + metrics.width + 'pixels')</li></ul>
+</body>

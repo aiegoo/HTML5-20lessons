@@ -1,0 +1,213 @@
+<!--
+Lesson-13
+Manipulating Images, Shadows and Pixels-->
+<DOCTYPE html>
+    <head>
+        <title>
+            Lesson-13  Manipulating Images, Shadows and Pixels
+        </title>
+    </head>
+    <body>
+<h1> Lesson-13 Manipulating Images, Shadows and Pixels</h1>
+
+<h2>1.  Using Images</h2>
+<h3> The drawImage() Function</h3>
+<ul>
+<li> using drawImage() function, you can load in an image such as jpeg,png or gif and draw it directly on the canvas.</li>
+</ul>
+
+<canvas id='c1ee' width='410' height='170'> </canvas>
+
+    <script>
+      canvas               = O('c1ee')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+      image     = new Image()
+      image.src = 'book_image/html5.png'
+
+      image.onload = function()
+      {
+        context.drawImage(image,  10, 10)// top-left corner at location 10,10
+        // resizing the image before it place on canvas:
+        // drawImage(image,x,y,width,height)
+        context.drawImage(image, 152, 10,  62,  70)
+        context.drawImage(image, 152, 90,  62,  70)
+        // the first 4 numeric arguments(23,26,86,98) are 2 pairs, the first of which is the location of top-left corner of the part of the image to crop and second pair are the width and height for the crop.
+        //
+        context.drawImage(image,  23, 26,  86,  98, 224, 10, 118, 150)
+        // using canvas as a source image:
+        // you are not restricted to using external images within canvas because you can copy sections of the canvas itself and write them back to it.even after cropping or reducing or enlarging them.
+        //left half of the canvas is captured, reduced in size and copied to top right of canvas.
+        context.drawImage(canvas, 10, 20, 205, 150, 350, 10,  48,  35)
+      }
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+
+    <h2> 2. Adding Shadows</h2>
+    <ul>
+<li> It supports addition of shadow to any element that you can draw on it with use of group of 4 properties.</li>
+<li> 1. shadowOffsetX: The horizontal offset in pixels that the shadow should be shifted to the right by.</li>
+<li>shadowOffsetY: The vertical offset in pixels that the shadow should be shifted to the down by</li>
+<li>shadowBlur: The number of pixels over which to blur the shadow outline</li>
+<li>shadowColor: the base color to use for the shadow</li>
+    </ul>
+    <!--
+    <canvas id='c2re' width='410' height='170'> </canvas>
+
+    <script>
+      canvas               = O('c2re')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+
+      image1 = new Image()
+      image2 = new Image()
+      image3 = new Image()
+      image4 = new Image()
+
+      image1.src = 'book_image/html5.png'
+      image2.src = 'book_image/smiley-50.png'
+      image3.src = 'book_image/mom.jpg'
+      image4.src = 'book_image/dad.jpg'
+
+      image1.onload = function() // HTML5 logo
+      {
+        context.shadowOffsetX = 8
+        context.shadowOffsetY = 8
+        context.shadowBlur    = 8
+        context.shadowColor   = '#000'
+        context.drawImage(image1,  10, 10)
+      }
+
+      image2.onload = function() // Smiley image
+      {
+        context.shadowOffsetX = 6
+        context.shadowOffsetY = 6
+        context.shadowBlur    = 6
+        context.shadowColor   = '#333'
+        context.drawImage(image2,  152, 10)
+      }
+
+      image3.onload = function() // Mom image
+      {
+        context.shadowOffsetX = 4
+        context.shadowOffsetY = 4
+        context.shadowBlur    = 4
+        context.shadowColor   = '#666'
+        context.drawImage(image3,  212, 10, 90, 73)
+      }
+
+      image4.onload = function() // Dad image
+      {
+        context.shadowOffsetX = 2
+        context.shadowOffsetY = 2
+        context.shadowBlur    = 2
+        context.shadowColor   = '#999'
+        context.drawImage(image4,  312, 10, 90, 73)
+      }
+
+      context.shadowOffsetX = 3  // "Hello" text
+      context.shadowOffsetY = 3
+      context.shadowBlur    = 5
+      context.shadowColor   = '#444'
+      context.font          = '38pt Arial'
+      context.fillStyle     = 'blue'
+      context.fillText('Hello', 152, 135)
+
+      context.shadowOffsetX = 0  // Outlined rectangle
+      context.shadowOffsetY = 0
+      context.shadowBlur    = 6
+      context.shadowColor   = '#000'
+      context.strokeStyle   = 'red'
+      context.lineWidth     = 3
+      context.strokeRect(280, 95, 120, 65)
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+-->
+<img src="book_image/addingshadows.png">
+<h2>3. Pixel Editing</h2>
+<p>you can directly manipulate the canvas at pixel level by 3 functions:</p>
+<ul>
+<li> getImageData() function: The below image shows that image data the left half of canvas is loaded into the imagedat array and it can accessed from Javascript to read and write its pixel data. this is done using data[] array whichis property of imagedata. <br> <b> -->The data[] Array</b> <br> it support millions of colors for each pixel are managed by allocating 4 locations per pixel for its red, green , blue and alpha components each accepting a value of between 0 and 255.</li>
+<li> putImageData() function</li>
+<li>createImageData() function:you can create simply  create a new one with blank data by calling the createImageData() function like :<br> <b> imagedata= createImageData(320,240)</b></li>
+</ul>
+<!--
+    <canvas id='canvas1' width='410' height='170'>
+      This web page uses the HTML5 canvas element,  which is
+      available on most modern browsers. If you wish to view
+      this page at its best,  please upgrade your browser to
+      the most recent version.
+    </canvas>
+<script>
+      canvas               = O('canvas1')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+      image                = new Image()
+      image.src            = 'book_image/boat.png'
+
+      image.onload = function()
+      {
+        context.drawImage(image, 0, 0)
+        imagedata = context.getImageData(0, 0, 205, 170)
+        width     = 205
+        height    = 170
+
+        for (y = 0 ; y < height ; ++y)
+        {
+          pos = y * width * 4
+
+          for (x = 0 ; x < width ; ++x)
+          {
+            average = (imagedata.data[pos    ] +
+                       imagedata.data[pos + 1] +
+                       imagedata.data[pos + 2]) / 3
+
+            // Uncomment below for more effects
+            average = 0xFF - average
+            average += 0x50
+
+            for (j = 0 ; j < 3 ; ++j)
+              imagedata.data[pos + j] = average
+
+            pos += 4
+          }
+        }
+
+        context.putImageData(imagedata, 205, 0)
+      }
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+-->
+    <img src="book_image/getImageData.png">
+</body>
+

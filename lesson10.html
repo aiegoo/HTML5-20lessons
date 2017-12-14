@@ -181,33 +181,71 @@ function S(obj)
 
 </script>
 <!-- **************************************************** -->
-<h3> The create RadialGradient() function</h3>
+<h3> The create RadialGradient() function &  The addColorStop()  function</h3>
 
-<canvas id='example5' width='200' height='100' style="border:1px solid #000000"></canvas>
-<script>
-canvas = O('example5')
-S(canvas).background ='#ddd'
-context = canvas.getContext('2d')
-gradient = context.createRadialGradient(75,50,5,90,60,100)
-gradient.addColorStop(0, "red")
-gradient.addColorStop(1, "white")
-// fill with gradient
-context.fillstyle =gradient
-context.fillRect(10,10,150,80)
+<canvas id='canvas1' width='410' height='170'>
+      This web page uses the HTML5 canvas element,  which is
+      available on most modern browsers. If you wish to view
+      this page at its best,  please upgrade your browser to
+      the most recent version.
+    </canvas>
 
-function O(obj)
-{
-    if(typeof obj == 'object') return obj
+    <script>
+      canvas               = O('canvas1')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+
+      gradient = context.createLinearGradient(55, 10, 55, 160)
+      gradient.addColorStop(0, '#F00')
+      gradient.addColorStop(1, 'yellow')
+      context.fillStyle = gradient
+      context.fillRect(10, 10, 90, 150)
+
+      gradient = context.createLinearGradient(110, 85, 200, 85)
+      gradient.addColorStop(0.0, '#FFF')
+      gradient.addColorStop(0.2, '#555')
+      gradient.addColorStop(1.0, '#000')
+      context.fillStyle = gradient
+      context.fillRect(110, 10, 90, 150)
+
+      gradient = context.createLinearGradient(210, 10, 300, 160)
+      gradient.addColorStop(0.00, 'red')
+      gradient.addColorStop(0.16, 'orange')
+      gradient.addColorStop(0.33, 'yellow')
+      gradient.addColorStop(0.50, 'green')
+      gradient.addColorStop(0.66, 'blue')
+      gradient.addColorStop(0.83, 'indigo')
+      gradient.addColorStop(1.00, 'violet')
+      context.fillStyle = gradient
+      context.fillRect(210, 10, 90, 150)
+
+      gradient = context.createRadialGradient(355, 85, 0, 355, 85, 75)
+        // For a radial gradient that fits within the rectangle,
+        // change the final parameter to 45 in the preceding line.
+      gradient.addColorStop(0.00, 'red')
+      gradient.addColorStop(0.16, 'orange')
+      gradient.addColorStop(0.33, 'yellow')
+      gradient.addColorStop(0.50, 'green')
+      gradient.addColorStop(0.66, 'blue')
+      gradient.addColorStop(0.83, 'indigo')
+      gradient.addColorStop(1.00, 'violet')
+      context.fillStyle = gradient
+      context.fillRect(310, 10, 90, 150)
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
         else return document.getElementById(obj)
-}
+      }
 
-function S(obj)
-{
-    return O(obj).style
-}
-</script>
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+
+<!--
 <h3> The addColorStop()  function</h3>
-
 <canvas id='example6' width='410' height='170'></canvas>
 <script>
 canvas = O('example6')
@@ -232,7 +270,7 @@ function S(obj)
     return O(obj).style
 }
 </script>
-
+-->
 
 <h2> Using Patterns</h2>
 <h3> The createPattern() Function</h3>
@@ -258,4 +296,6 @@ function S(obj)
 
 
 </script>
+
+
 </body>

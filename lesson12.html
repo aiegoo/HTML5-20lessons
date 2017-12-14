@@ -1,0 +1,382 @@
+<!--
+Lesson-12
+Drawing Lines , Paths and Curves-->
+<DOCTYPE html>
+    <head>
+        <title>
+            Lesson-12  Drawing Lines , Paths and Curve
+        </title>
+    </head>
+    <body>
+<h1> Lesson-12  Drawing Lines , Paths and Curve</h1>
+<h2> 1. Drawing Lines and Paths</h2>
+<ul>
+<li> The lineWidth Property</li>
+<li> The lineCap Property</li>
+<li> The lineJoin Property</li>
+<li> The miterLimit Property</li>
+</ul>
+
+<h3>Examples::</h3>
+<canvas id='canvas1' width='410' height='170'> </canvas>
+    <script>
+      canvas               = O('canvas1')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+
+      context.lineWidth   = 2       // First green line
+      context.strokeStyle = 'green'
+      context.beginPath() // canvas must start with a call to beginPath() and end with a call to closePath().
+      context.moveTo( 20,  10) // move to location on canvas
+      context.lineTo( 20, 160) // to specify that line should be drawn , to draw a line from the current location.
+      context.stroke() // The path has been processed by stroke() function and all parts in the path are drawn.
+      context.closePath()
+
+      context.beginPath()           // Second green line
+      context.moveTo(190,  10)
+      context.lineTo(190, 160)
+      context.stroke()
+      context.closePath()
+
+      context.beginPath()           // Third green line
+      context.moveTo(210,  10)
+      context.lineTo(210, 160)
+      context.stroke()
+      context.closePath()
+
+      context.beginPath()           // Fourth green line
+      context.moveTo(320,  10)
+      context.lineTo(320, 160)
+      context.stroke()
+      context.closePath()
+
+      context.lineWidth   = 10      // Top left line 10 pixels
+      context.strokeStyle = 'red'   // in red
+      context.lineCap     = 'butt'  // with butted line caps
+      context.beginPath()
+      context.moveTo( 20,  20)
+      context.lineTo(190,  20)
+      context.stroke()
+      context.closePath()
+      // lineCap property- you can choose the way the starts and ends of lines are displayed.
+      context.lineCap = 'round'     // Middle left red line
+      context.beginPath()           // with rounded line caps
+      context.moveTo( 20,  85)
+      context.lineTo(190,  85)
+      context.stroke()
+      context.closePath()
+
+      context.lineCap = 'square'    // Bottom left red line
+      context.beginPath()           // with squared line caps
+      context.moveTo( 20, 150)
+      context.lineTo(190, 150)
+      context.stroke()
+      context.closePath()
+
+      context.lineCap  = 'butt'     // Top right joined red lines
+      context.lineJoin = 'round'    // with butted line caps & rounded join
+      context.beginPath()
+      context.moveTo(210,  10)
+      context.lineTo(320,  20)
+      context.lineTo(210,  30)
+      context.stroke()
+      context.closePath()
+
+      context.lineCap  = 'round'    // Middle right joined red lines
+      // lineJoin property - it applies only at points at which lines are joined. it supports values of round, bevel and miter.
+      context.lineJoin = 'bevel'    // with rounded line caps & bevelled join
+      context.beginPath()
+      context.moveTo(210,  70)
+      context.lineTo(320,  85)
+      context.lineTo(210,  95)
+      context.stroke()
+      context.closePath()
+
+      context.lineCap    = 'square' // Bottom right joined red lines
+      context.lineJoin   = 'miter'  // with squared line caps & mitered join
+      // to allow the quite sharp angle to extend so far
+      context.miterLimit = '12'     // using 12 pixels extended limit
+      context.beginPath()
+      context.moveTo(210, 140)
+      context.lineTo(320, 150)
+      context.lineTo(210, 160)
+      context.stroke()
+      context.closePath()
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+<h3> rect() function example</h3>
+<canvas id='ff' width='410' height='170'> </canvas>
+<script>
+      canvas               = O('ff')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+
+      context.beginPath()
+      context.moveTo( 20,  20)
+      context.lineTo(390,  20)
+      context.lineTo(390, 150)
+      context.lineTo( 20, 150)
+      context.lineTo( 20,  20)
+      // if you wanted to draw in the first instance was a rectangle, then there is quicker way to do this than defining an entire path. you can use rect() like this
+      //context.beginPath()
+      //context.rect(40,40,330,90)
+      //context.closePath()
+      //context.stroke()
+      //context.closePath()
+      //context.stroke()
+      context.rect(   40,  40, 330, 90) // <--------
+      context.closePath()
+      context.stroke()
+
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+
+    <h3> fill() function example</h3>
+
+    <canvas id='example' width='410' height='170'> </canvas>
+     <script>
+      canvas               = O('example')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+
+      context.beginPath()      // Diamond shape
+      context.moveTo(  0,  85)
+      context.lineTo(205,   0)
+      context.lineTo(410,  85)
+      context.lineTo(205, 170)
+      context.lineTo(  0,  85)
+      context.closePath()
+      context.stroke()
+      context.fillStyle = '#ee8'
+      context.fill() // you can fill in any area bounded by a path.
+      context.clip() // when creating a path, you can choose to constrain the drawing area using the clip() function to select any area of the canvas, so that any part that would be drawn outside of this area will be ignored, or only parts of path that fall inside the clipped area will be used.
+
+      context.beginPath()      // Star shape
+      context.moveTo(  0,   0)
+      context.lineTo(205,  65)
+      context.lineTo(410,   0)
+      context.lineTo(225,  85)
+      context.lineTo(410, 170)
+      context.lineTo(205, 105)
+      context.lineTo(  0, 170)
+      context.lineTo(185,  85)
+      context.lineTo(  0,   0)
+      context.closePath()
+      context.fillStyle = '#44a'
+      context.fill()
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+<h2> 2. Curves</h2>
+<h3> arc() Function</h3>
+<p> arc() function takes 6 arguments.</p>
+<ul>
+<li> A pair of coordinates representing the center of circle upon which the arc is based.</li>
+<li>The Radius</li> <li> The Radian offset value for the start of the arc</li> <li> The radian offset value for the end of the arc</li> <li>value indicating whether to draw the arc clockwise or counterclockwise</li></ul>
+<canvas id='ccc' width='410' height='170'> </canvas>
+
+    <script>
+      canvas               = O('ccc')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+      context.strokeStyle  = 'blue'
+      context.fillStyle    = 'green'
+
+      context.beginPath()
+      context.moveTo(55, 85)
+      context.arc(55,  85, 45, 0, Math.PI / 2)
+      context.closePath()
+      context.stroke()
+
+      context.beginPath()
+      context.moveTo(155, 85)
+      context.arc(155, 85, 45, 0, Math.PI)
+      context.closePath()
+      context.stroke()
+
+      context.beginPath()
+      context.moveTo(255, 85)
+      context.arc(255, 85, 45, 0, Math.PI / 2 * 3)
+      context.closePath()
+      context.stroke()
+
+      context.beginPath()
+      context.moveTo(355, 85)
+      context.arc(355, 85, 45, 0, Math.PI * 2)
+      context.closePath()
+      context.fill()
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+<h3> only the arcs are drawn :-</h3>
+<canvas id='aaa' width='410' height='170'>
+      This web page uses the HTML5 canvas element,  which is
+      available on most modern browsers. If you wish to view
+      this page at its best,  please upgrade your browser to
+      the most recent version.
+    </canvas>
+
+    <script>
+      canvas               = O('aaa')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+      context.strokeStyle  = 'red'
+
+      context.beginPath()
+      context.arc(55,  85, 45, 0, Math.PI / 2)
+      context.stroke()
+      context.closePath()
+
+      context.beginPath()
+      context.arc(155, 85, 45, 0, Math.PI)
+      context.stroke()
+      context.closePath()
+
+      context.beginPath()
+      context.arc(255, 85, 45, 0, Math.PI / 2 * 3)
+      context.stroke()
+      context.closePath()
+
+      context.beginPath()
+      context.arc(355, 85, 45, 0, Math.PI * 2)
+      context.stroke()
+      context.closePath()
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+
+    <h3> The arcTo() function Example</h3>
+
+      <canvas id='abc' width='410' height='170'> </canvas>
+
+    <script>
+      canvas               = O('abc')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+
+      context.lineWidth   = 5
+      context.strokeStyle = 'green'
+      context.beginPath()
+      context.moveTo(0, 170)
+      context.lineTo(0,   0)
+      context.lineTo(170, 0)
+      context.stroke()
+      context.closePath()
+
+      context.lineWidth   = 2
+      context.strokeStyle = 'blue'
+      context.beginPath()
+      context.moveTo(0, 170) // current path position has been achived using a moveTo() which places the start position of the path at the bottom left corner of canvas.
+      // arcTo() function draws a curve based on current path location the path has reached and arguments that you supply to it representing a pair of imaginary tangent lines touching the circle's perimeter.
+      context.arcTo(0, 0, 170, 0, 170) // a curve  can be created with its start point at this location and an end point at location (170,0)
+      // we have start point 0,170 from the moveTo() call end point of 170,0 being the third and fourth arguments to arcTo().
+      // the first two arguments 0,0 represent the end point of an imaginary tangent line starting at 0,170 and ending at 0,0.then 3rd and 4th arguments represent end of the tangent line drawn from 0,0 to 170,0.
+      context.stroke()
+      context.closePath()
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+
+    <h3> The quadraticCurveTo() function</h3>
+    <p> you can create the most fancy of curves using this function. which employs an imaginary attactor object that pulls the curve towards ot  for example : let draw a line between left and right side of canvas using simple stroke() call.</p>
+    <p> <code> context.beginPath() <br> context.moveTo(0, 85) <br> context.lineTo(410, 85) <br> context.stroke() <br> context.closePath() </code> </p>
+
+    <p> now let  draw a curved line between thses positions but with an imaginary attactor up in the top left hand corner at location 0,0 : <code> <br> context.beginPath() <br> context.moveTo(0, 85) <br> context.quadraticCurveTo(0,0,410,85) <br> context.stroke() <br> context.closePath() </code></p>
+
+    <h3> The bezierCurveTo() Function</h3>
+    <p> It support the use of imaginary attactors which can be placed anywhere on or off the canvas.</p>
+    <canvas id='bez' width='410' height='170'>
+      This web page uses the HTML5 canvas element,  which is
+      available on most modern browsers. If you wish to view
+      this page at its best,  please upgrade your browser to
+      the most recent version.
+    </canvas>
+
+    <script>
+      canvas               = O('bez')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+      context.lineWidth    = 2
+
+      context.strokeStyle = 'green'
+      context.beginPath()
+      context.moveTo(0,   85)
+      context.lineTo(410, 85)
+      context.stroke()
+      context.closePath()
+
+      context.strokeStyle = 'blue'
+      context.beginPath()
+      context.moveTo(0, 85)
+      context.bezierCurveTo(0, 0, 410, 170, 410, 85)
+      context.stroke()
+      context.closePath()
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+</body>
