@@ -1,0 +1,71 @@
+<!--
+Lesson-17  Implementing Local Storage and Cross-Document Messaging Messaging-->
+<DOCTYPE html>
+    <head>
+        <title>
+        Lesson-17  Implementing Local Storage and Cross-Document Messaging Messaging
+        </title>
+
+    </head>
+
+    <body>
+        <h1>Lesson-17  Implementing Local Storage and Cross-Document Messaging Messaging</h1>
+        <p> Local storage is similar to cookies. It supports much larger amounts of data and also supllies a local database  engine to make saving and retrieving data much easier.</p>
+        <p> Th benefits of this are more powerful web apps with more  data residing on your computer rather than on servers somewhere else in the world. For example: a website that manages your TV viewing could store all your favorite programs in a local a database, so that when you open the app it only has to check a website of listings to see when these programs are on next, and on which channels. Seond benefit: local database can be accessed from a local web page using Javascript means data can be used by the app even where there is no internet connection.</p>
+        <h2>1. Using Local Storage</h2>
+        <ul><li> With HTML5 you can access to a much larger local storage space between 5MB and 10MB per domain that remains over page loads and between website visits and which is not sent to the server on each page load.</li> <li> you can handle the data in pairs consisting of a key and its value. The key is the name assigned for refering the data and the value  an hold any type of data but it is saved as a sting.</li>
+            <li>All data is unique to the current domian.</li></ul>
+            <h4> Storing and Retrieving Local Data</h4>
+            <ul><li> To access local storage, you use methods of loaclStorage object :<br> setItem() <br> getItem() <br> removeItem() <br> clear()</li>
+                <li> For example : <br> localStorage.setItem('username','BObama') <br> localStorage.setItem('password','IamIPres')</li>
+                <li> Details can be retrieved to save the user entering them again : <br> username =localStorage.getItem('username') <br> password=localStorage.getItem('password')</li>
+                <li> you can access the localstorage object directly : <br> localStorage.setItem('key','value') <br> localStorage['key'] ='value'</li>
+            </ul>
+            <script>
+      if (typeof localStorage == 'undefined')
+      {
+        document.write("Local storage unavailable.")
+      }
+      else
+      {
+        document.write("Local storage available.")
+
+        localStorage.setItem('username', 'BObama')
+        localStorage.setItem('password', 'IAmThePrez')
+
+        username  = localStorage.getItem('username')
+        password  = localStorage.getItem('password')
+
+        alert("Data retrieved: username = '"
+          + username + "', password = '"
+          + password + "'.")
+      }
+    </script>
+    <h4> Removing and Clearing Local Data</h4>
+    <ul><li> To remove an item of data from the local storage, all you need to do is issue a command: <br> username=localStorage.removeItem('username')</li>
+        <li> you can completely clear the local storage for the current domain by issuing this command : <br> localStorage.clear()</li></ul>
+
+        <h2>2. Cross-Document Messaging</h2>
+        <ul><li>It allows  scripts in different documents to interact with each other through the use of postMessage() function.</li>
+            <li>The code to send messages is just a single instruction, in which you pass the message to be sent and the domain to which it applies</li></ul>
+            <iframe id='frame' src='lesson3.html' width='360' height='75'></iframe>
+
+    <script>
+      count = 1
+
+      setInterval(function()
+      {
+        document.getElementById('frame').contentWindow.
+          postMessage('Message ' + count++, 'http://localhost')
+      }, 1000)
+    </script>
+    <ul><li> The file lesson3.html like this: <br> </li></ul>
+     <div id='output'>a</div>
+    <script>
+      window.onmessage = function(event)
+      {
+        if (event.origin == 'http://localhost')
+          document.getElementById('output').innerHTML = event.data
+      }
+    </script>
+    </body>
