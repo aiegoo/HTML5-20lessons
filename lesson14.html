@@ -6,8 +6,339 @@ Compositing, Transparency and Transformations-->
         <title>
             Lesson-14  Compositing, Transparency and Transformations
         </title>
+        <style>
+         .canvas {
+            margin     :5px;
+            float      :left;
+            background :#ddd; }
+         .compositing {
+            font-family:'courier new';
+            font-size  :9pt; }
+      </style>
     </head>
 
     <body>
         <h1>Lesson-14 Compositing, Transparency and Transformations</h1>
+        <h3> 1. Compositing and Transparency</h3>
+        <ul>
+            <li> Compositing id ther method used for placing an element on the canvas. There are 12  different types which effect of placing new elements in front of or behind ones only on top of an exisiting element, never over an exisiting element and os forth.</li>
+            <li> The globalCompositionOpearation Property : This property drastically affects the way new elements are added to the canvas. It supports 12 different values such as source-over which is default and is applied like this: <br><b> context.globalCompositionOperation = 'source-over</b>. Others are::</li>
+            <ol>
+                <li> source-over</li>
+                <li>source-in</li>
+                <li>source-out</li>
+                <li>source-atop</li>
+                <li>destination-over</li>
+                <li>destination-in</li>
+                <li>destination-out</li>
+                <li>destination-atop</li>
+                <li>lighter</li>
+                <li>darker</li>
+                <li>copy</li>
+                <li>xor</li></ol>
+    <div class='compositing'>
+    <canvas class='canvas' id='c1'  width='120' height='120'></canvas>
+    <canvas class='canvas' id='c2'  width='120' height='120'></canvas>
+
+    <canvas class='canvas' id='c3'  width='120' height='120'></canvas>
+    <canvas class='canvas' id='c4'  width='120' height='120'></canvas>
+    <br clear='left'>
+    &nbsp;&nbsp;&nbsp; source-over &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    source-in &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; source-out
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; source-atop<br>
+
+
+    <canvas class='canvas' id='c5'  width='120' height='120'></canvas>
+    <canvas class='canvas' id='c6'  width='120' height='120'></canvas>
+    <canvas class='canvas' id='c7'  width='120' height='120'></canvas>
+    <canvas class='canvas' id='c8'  width='120' height='120'></canvas>
+    <br clear='left'>
+    &nbsp;destination-over &nbsp; destination-in &nbsp;&nbsp;&nbsp;
+    destination-out &nbsp; destination atop<br>
+
+    <canvas class='canvas' id='c9'  width='120' height='120'></canvas>
+    <canvas class='canvas' id='c10' width='120' height='120'></canvas>
+    <canvas class='canvas' id='c11' width='120' height='120'></canvas>
+    <canvas class='canvas' id='c12' width='120' height='120'></canvas>
+    <br clear='left'>
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;lighter
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; darker
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    &nbsp;copy &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;xor</div>
+
+    <script>
+      function O(obj) {if (typeof obj == 'object') return obj;
+        else return document.getElementById(obj) }
+      function S(obj) { return O(obj).style }
+
+      image        = new Image()
+      image.src    = 'book_image/smiley-100.gif'
+      image.onload = function()
+      {
+        types = [
+          'source-over',      'source-in',
+              'source-out',       'source-atop',
+          'destination-over', 'destination-in',
+                  'destination-out',  'destination-atop',
+                  'lighter',          'darker',
+          'copy',             'xor'
+        ]
+
+        for (j = 0 ; j < 12 ; ++j)
+        {
+          canvas               = O('c' + (j + 1))
+          context              = canvas.getContext('2d')
+          S(canvas).background = '#ddd'
+          context.fillStyle    = 'red'
+
+          // context.globalAlpha = 0.5
+
+          context.arc(50, 50, 47, 0, Math.PI * 2, false)
+          context.fill()
+          context.globalCompositeOperation = types[j]
+          context.drawImage(image, 20, 20, 100, 100)
+        }
+      }
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+  <li> The globalAlpha Property : when drawing an element to the canvas, you can choose how much the transparency to give it by providing a floating point value to globalAplha property of between 0 and 1 inclusive with 0 no transparency,1 being totally tansparent and 0.5 being half transparancy like this: <br> <b> context.globalAlpha = 0.5</b></li>
+  <li> <b> Using Transformations</b></li>
+  <li> The scale() function: to apply a global scaling factor to all future elements drawn on the canvas, which set the  sacling of horizontal dimensions to 1.8 times and vertical to 1.5 times the original size: <br> <b> context.scale(1.8,1.5)</b></li>
+   <canvas id='sc' width='410' height='170'>
+      This web page uses the HTML5 canvas element,  which is
+      available on most modern browsers. If you wish to view
+      this page at its best,  please upgrade your browser to
+      the most recent version.
+    </canvas>
+
+    <script>
+      canvas               = O('sc')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+      context.lineWidth    = 2
+
+      context.strokeStyle = 'red'
+      context.strokeRect(20, 20, 195, 75)
+      context.scale(1.8, 1.5)
+      context.strokeStyle = 'blue'
+      context.strokeRect(20, 20, 195, 75)
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+  <li> The save() and restore() Functions</li>
+
+  <canvas id='sandr' width='410' height='170'>
+      This web page uses the HTML5 canvas element,  which is
+      available on most modern browsers. If you wish to view
+      this page at its best,  please upgrade your browser to
+      the most recent version.
+    </canvas>
+
+    <script>
+      canvas               = O('sandr')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+
+      context.save()
+
+      context.fillStyle = 'red'
+      context.fillRect(10, 10, 80, 30)
+      context.scale(1.6, 1.6)
+      context.fillStyle = 'yellow'
+      context.fillRect(10, 10, 80, 30)
+      context.scale(1.6, 1.6)
+      context.fillStyle = 'blue'
+      context.fillRect(10, 10, 80, 30)
+      context.scale(1.6, 1.6)
+      context.fillStyle = 'green'
+      context.fillRect(10, 10, 80, 30)
+
+      context.restore()
+
+      context.fillStyle = 'orange'
+      context.fillRect(10, 10, 80, 30)
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+  <li> The rotate() Function: you can rotate it to just the right angle with a call to rotate() : <br><b> context.rotate(Math.PI / 2)</b></li>
+  <li> The translate() Function: if you prefer to rotate an object around another axis such as its center, you need to also call the translate() function to move the origin of the canvas to a new location, around which the elements can rotate like this: <br> <b> context.translate(100,100) </b></li>
+  <canvas id='tt' width='410' height='170'>
+      This web page uses the HTML5 canvas element,  which is
+      available on most modern browsers. If you wish to view
+      this page at its best,  please upgrade your browser to
+      the most recent version.
+    </canvas>
+
+    <script>
+      canvas               = O('tt')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+
+      context.save()
+
+      context.fillStyle = 'green'
+      context.fillRect(75, 0, 75, 75)
+
+      context.rotate(Math.PI / 20)
+      context.fillStyle = 'pink'
+      context.fillRect(75, 0, 75, 75)
+
+      context.rotate(Math.PI / 20)
+      context.fillStyle = 'blue'
+      context.fillRect(75, 0, 75, 75)
+
+      context.rotate(Math.PI / 20)
+      context.fillStyle = 'yellow'
+      context.fillRect(75, 0, 75, 75)
+
+      context.rotate(Math.PI / 20)
+      context.fillStyle = 'red'
+      context.fillRect(75, 0, 75, 75)
+
+      context.rotate(Math.PI / 20)
+      context.fillStyle = 'violet'
+      context.fillRect(75, 0, 75, 75)
+
+      context.rotate(Math.PI / 20)
+      context.fillStyle = 'purple'
+      context.fillRect(75, 0, 75, 75)
+
+      context.rotate(Math.PI / 20)
+      context.fillStyle = 'lime'
+      context.fillRect(75, 0, 75, 75)
+
+      context.rotate(Math.PI / 20)
+      context.fillStyle = 'plum'
+      context.fillRect(75, 0, 75, 75)
+
+      context.rotate(Math.PI / 20)
+      context.fillStyle = 'brown'
+      context.fillRect(75, 0, 75, 75)
+
+      context.restore()
+
+      context.translate(280, 85)
+      context.fillStyle = 'green'
+      context.fillRect(-60, -60, 120, 120)
+
+      context.rotate(Math.PI / 10)
+      context.fillStyle = 'pink'
+      context.fillRect(-60, -60, 120, 120)
+
+      context.rotate(Math.PI / 10)
+      context.fillStyle = 'blue'
+      context.fillRect(-60, -60, 120, 120)
+
+      context.rotate(Math.PI / 10)
+      context.fillStyle = 'yellow'
+      context.fillRect(-60, -60, 120, 120)
+
+      context.rotate(Math.PI / 10)
+      context.fillStyle = 'violet'
+      context.fillRect(-60, -60, 120, 120)
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+                </ul>
+
+                <h3> 2. The transform() function</h3>
+                <p>You can stretch and transform elements in many different ways using matrixes.</p>
+                <canvas id='trans' width='410' height='170'>
+      This web page uses the HTML5 canvas element,  which is
+      available on most modern browsers. If you wish to view
+      this page at its best,  please upgrade your browser to
+      the most recent version.
+    </canvas>
+
+    <script>
+      canvas               = O('trans')
+      S(canvas).background = '#ddd'
+      context              = canvas.getContext('2d')
+
+      context.save()
+
+      context.fillStyle = 'green'
+      context.fillRect(35, 35, 50, 50)
+
+      // Simulate scale(2, 1.5)
+      // context.transform(2, 0, 0, 1.5, 0, 0)
+      // context.fillStyle = 'blue'
+      // context.fillRect(35, 35, 50, 50)
+
+      context.restore()
+      context.save()
+
+      //context.transform(1, 0.7, 0, 1, 0, 0)
+      context.transform(1, 0.7, 0, 1, -30, 20)
+
+      context.fillStyle = 'orange'
+      context.fillRect(35, 35, 50, 50)
+
+      context.restore()
+      context.save()
+
+      // context.transform(1, 0, 0.7, 1, 0, 0)
+      context.transform(1, 0, 0.7, 1, 20, -30)
+
+      context.fillStyle = 'violet'
+      context.fillRect(35, 35, 50, 50)
+      context.restore()
+      context.save()
+
+      // context.transform(1, 0.7, 0.7, 1, 0, 0)
+      context.transform(1, 0.7, 0.7, 1, 25, 25)
+
+      context.fillStyle = 'red'
+      context.fillRect(35, 35, 50, 50)
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
     </body>
