@@ -1,0 +1,164 @@
+<!--
+Lesson-16 Building Advanced Forms -->
+<DOCTYPE html>
+    <head>
+        <title>
+            Lesson-16 Building Advanced Forms
+        </title>
+
+    </head>
+
+    <body onload='document.forms.myform.myfield.focus()'>
+        <h1>Lesson-16 Building Advanced Forms</h1>
+<h2> 1.  New Form Attributes</h2>
+<h4> The autocomplete Attribute:</h4>
+<ul><li> it can applied to form tag or any of the color,date email,password, range,search,telephone,text or url types of the input tag. when autocomplete is on, any field with an id that has previously had an input entered will remember its value and offer it as a suggested value, saving you from having to enter it again</li>
+</ul>
+<h4> The autofocus Attribute</h4>
+<ul><li> can be applied to input tag to give its fields automatic focus when a page loads. to achieve the same effect on older browsers you can add some javascript to body tag of your web page: <b>onload='document.forms.myform.myfield.focus()'</b></li></ul>
+
+    <form id='myform' action='prog.php' method='post' autocomplete='on'>
+     Text <input id='myfield' type='text' name='field' autofocus='autofocus'>
+    </form>
+    <h4>The form attribute</h4>
+<!--
+<form id='myform' action='prog.php' method='get'>
+<input type='submit'>
+</form>
+<input type='text' form='myform' name='field'>        -->
+<ul><li> with the form attribute, it is not necessary for you to place input tag wihn the form to which they apply. As long as you give form an ID, you can specify that value as argumant for the form attribute. </li></ul>
+    <h2>2. Form Overrides</h2>
+    <h4> The formaction Attribute  </h4>
+    <ul>
+        <li>It let's you change the action attribute to different destination.</li>
+        <li>for example the form will not post to program "prog.php" as specified in the form , instead post to "prog2.php"</li>
+    </ul>
+    <form action='prog.php' method='post'>
+      <input type='text' name='field'>
+      <input type='submit' formaction='prog2.php'>
+    </form>
+    <h4> The formenctype Attribute</h4>
+    <ul>
+        <li> It let's to change the encoding type of the form</li>
+        <li> it is similar to formaction attribute</li>
+    </ul>
+    <form action='prog.php' method='post'>
+      <input type='text' name='field'>
+      <input type='submit' formenctype='multipart/form-data'>
+    <h4>The formmethod Attribute</h4>
+    <ul><li> It let's you to change the posting method(post or get) in a similar manner to the formaction method</li></ul>
+      <form action='prog.php' method='post'>
+      <input type='text' name='field'>
+      <input type='submit' formmethod='get'>
+      <h4> The formnovalidate Attribute</h4>
+      <ul><li> It let's you change the novalidate attribute.</li></ul>
+      <form action='prog.php' method='post'>
+      <input type='text' name='field'>
+      <input type='submit' formnovalidate='true'>
+      <h4>The formtarget Attribute</h4>
+      <ul><li> It let's you change the target attribute.</li></ul>
+      <form action='prog.php' method='post'>
+      <input type='text' name='field'>
+      <input type='submit' formtarget='_blank'>
+      <h4>The height and width Attribute</h4>
+      <ul><li> The height and width attribute can be applied to image type of the input tag to change its height and width. </li></ul>
+      <form action='prog.php' method='post'>
+      <input type='image' src='book_image/finger.png' width='117' height='100'>
+      <h4>The listATtribute and  datalist tag and option tags</h4>
+      <ul><li>datalist offer a selection of URLs from which to choose</li>
+        <li>The value supplied to list attribute should be the id name of datalist tag</li></ul>
+         Choose a web page: <input type='url' name='site'
+      list='links'>
+    <datalist id='links'>
+      <option label='Google' value='http://google.com'>
+      <option label='Yahoo!' value='http://yahoo.com'>
+      <option label='Bing'   value='http://bing.com'>
+      <option label='Ask'    value='http://ask.com'>
+    </datalist>
+    <h4>The min and max Attribute</h4>
+    <ul><li>It is used to specify minimum and maximum value for input types that contain numbers and dates</li></ul>
+    <input type='time' name='deliver' value='09:00' min='09:00' max='17:00' step='3600'>
+    <h4> The multiple Attribute</h4>
+    <ul><li> It allows you to accept multiple values for an input tag that uses any of the email,range, or file types.</li></ul>
+     <input type='file' name='images' multiple='multiple'>
+     <h4> The novalidate and formnovalidate Attributes</h4>
+     <ul><li>The novalidate attribute is applicableto form tag</li> <li>The formnovalidate attribute is applicable to only submit and image types of the input tag.</li></ul>
+     Text<input type='text' name='field' novalidate='true'>
+      <h4> The pattern Attribute</h4>
+      <ul><li>It let's you to specify a regular expression with which an input field should be evaluated.It can be applied to input tag that uses any of the email,password,search,telephone,text or url types.</li></ul>
+      <form method='post' action='post.php'>
+      <input type='text' name='username' pattern='[\w\-]{6,16}'>
+      <input type='submit'>
+      <h4>The placeholder Attribute</h4>
+      <ul><li>It let's you place a helpful hint in any blank input field with which you can help explian to users what they should enter.</li></ul>
+       <input type='text' name='username' size='35'
+     placeholder='Enter your 6-16 character username'>
+     <h4> The required Attribute</h4>
+     <ul><li> It is used to ensure that a field has been completed before a form is submitted.</li></ul>
+     <form method='get' action='post.php'>
+      <input type='number' name='age' required='required'>
+      <input type='submit'>
+    </form>
+    <h4> The step Attribute</h4>
+    <ul><li> Itis used to specify a step value for input types that contain numbers or dates.</li></ul>
+
+    <h2> 3. New Form Input Types</h2>
+    <h4> The color Input Type</h4>
+    <ul><li> It calls up a color picker so you can simply click on the color of your choice.</li></ul>
+    <form><pre>
+      Enter your preferred color
+      <input type='color' name='favcolor'> <input type='submit'>
+    </pre></form>
+    <h4>Date and Time Pickers</h4>
+    <ul><li> You will able to click on and a calendar will pop up from which you can select a date or time.</li></ul>
+    <form><pre>
+      Enter Date:           <input type='date'           name='d1' value='2018-03-17'       >
+      Enter Month:          <input type='month'          name='d2' value='2018-03'          >
+      Enter Week:           <input type='week'           name='d3' value='2018-W27'         >
+      Enter Time:           <input type='time'           name='d4' value='12:34'            >
+      Enter DateTime:       <input type='datetime'       name='d5' value='2018-03-22T12:34Z'>
+      Enter Local DateTime: <input type='datetime-local' name='d6' value='2018-03-22T12:34' >
+      <input type='submit'>
+    </pre></form>
+    <h4>The date Input Type</h4>
+    <ul><li> It selects a date and returned value will be of the form YYYY-MM-DD.</li></ul>
+    <input type='date' name='thedate'>
+    <h4>the Month Input Type</h4>
+     <ul><li> It selects a month and returned value will be of the form YYYY-MM.</li></ul>
+    <input type='month' name='themonth'>
+    <h4>The time Input Type</h4>
+    <ul><li> It returns the time in the 24 hour form HH:MM.</li></ul>
+    <input type='time' name='thetime'>
+    <h4>The week Input Type</h4>
+    <ul><li> It returns the week in the form YYYY-WNN.</li></ul>
+    <input type='week' name='theweek'>
+    <h4> The datetime Input Type</h4>
+    <ul><li> It returns the date and time in UTC.</li></ul>
+    <input type='datetime' name='thedateandtime'>
+    <h4> The datetime-local Input Type</h4>
+    <ul><li> It returns the user local date and time the returned value will be of the form YYYY-MM-DDTHH:MM.</li></ul>
+    <input type='datetime-local' name='localdateandtime'>
+     <h4>The email Input Type</h4>
+     <ul><li> This type ensures that the browser knows an email address is excepted and if necessary can cater to it.</li></ul>
+    <input type='email' name='emailaddress'>
+    <h4>The number Input Type</h4>
+    <ul><li> It ensures that only numbers can be entered.</li></ul>
+    <input type='number' name='age'>
+    <h4>The range Input Type</h4>
+    <ul><li> It causes the range widget to be displayed that you can slide to select any value between min and max, with a specified start and step value.</li></ul>
+    <form method='get' action ='post.php'>
+      <input type='range' name='num' min='0' max='255'
+        value='128' step='1'>
+      <input type='submit'>
+      <h4>The search Input Type</h4>
+      <ul><li> when you specify the search type, browsers are supposed to tailor the input box to provide features that might include search suggestions and an icon with which to empty the field, and possibly styling changes to alrt you to the type of input.</li></ul>
+    <input type='search' name='searchphase'>
+    <h4>The tel Input Type</h4>
+    <ul><li> It informs the browser that a telephone number is to be expected.</li></ul>
+    <input type='tel' name='phone'>
+
+    <h4>The url Input Type</h4>
+    <ul><li> url type is also there to tell the browser about the type of data to be expected. It ensures that the .,/ and .com buttons are displayed.</li></ul>
+    <input type='url' name='webpage'>
+        </body>
+        </html>
