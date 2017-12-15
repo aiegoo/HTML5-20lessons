@@ -19,4 +19,8 @@ This repository contains 20 lessons of HTML5 from the book- HTML5 (20 lessons to
 * Lesson14- Compositing, Transparency, and Tranformations
 * Lesson15 - Supporting Geolocation
 * Lesson16-  Building Advanced Forms
+* Lesson17 - Implementing Local Storage and Cross Document Messaging
+* Lesson 18- Playing Audio
+* Lesson 19- Displaying Video
+* Lesson20- Working with Microdata, Web Workers and Web Applications
 
