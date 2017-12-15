@@ -1,0 +1,81 @@
+<!--
+Lesson-18 Playing Audio-->
+<DOCTYPE html>
+    <head>
+        <title>
+        Lesson-18 Playing Audio
+        </title>
+
+    </head>
+
+    <body>
+        <h1>Lesson-18 Playing Audio</h1>
+        <h2> Understanding Codecs</h2>
+        <ul><li> The term codecs stands for encoder/decoder and describes the functionality provided by software that encodes and decodes media such as audio and video.</li>
+            <li> Below are the codecs currently in use by HTML5 audio tag: <br> AAC (Advanced Audio Coding)<br> MP3 <BR> PCM(Pluse Coded Modulation) <BR> Vorbis(Ogg Vorbis)- .ogg extension <br> </li>
+            <li> following list details the major operating systems and browsers alongwith the audio types they support by default: <br>
+                <ul>
+                 <li> Apple iOS - AAC, MP3,PCM</li>
+                 <li>Apple Safari - AAC, MP3,PCM</li>
+                 <li> Google Android 2.3+ - AAC,MP3,Vorbis</li>
+                 <li>Internet Explorer - AAC,MP3</li>
+                 <li>Mozilla Firefox - MP3,PCM,Vorbis</li>
+                 <li>Opera- PCM,Vorbis</li>
+             </ul>
+         </li>
+     </ul>
+     <h4> The audio and source Tags</h4>
+     <audio controls>
+      <source src='audio/audio.m4a' type='audio/aac'>
+      <source src='audio/audio.mp3' type='audio/mpeg'>
+      <source src='audio/audio.ogg' type='audio/ogg'>
+
+     </audio>
+     <h4>The audio and source Tag Attributes</h4>
+     <ul>
+        <li> autoplay</li>
+        <li>controls</li>
+        <li>loop</li>
+        <li>preload</li>
+        <li>src</li>
+        <li> type</li>
+
+    </ul>
+    <h4> Supporting Older Browsers</h4>
+    <audio id='player' controls>
+      <object type="application/x-shockwave-flash"
+        data="audioplayer.swf" height="30" width="300">
+        <param name="FlashVars" value="mp3=audio.mp3&showstop=1&showvolume=1">
+      </object>
+      <source src='audio.m4a' type='audio/aac'>
+      <source src='audio.mp3' type='audio/mp3'>
+      <source src='audio.ogg' type='audio/ogg'>
+    </audio><br>
+
+    <button id='b1'>Play</button>
+    <button id='b2'>Pause</button>
+
+    <script>
+      O('b1').onclick = function()
+      {
+        O('player').play()
+      }
+
+      O('b2').onclick = function()
+      {
+        O('player').pause()
+      }
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+    </body>
+    </html>
