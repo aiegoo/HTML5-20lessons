@@ -1,0 +1,101 @@
+<!--
+Lesson-15  Supporting Geolocation
+-->
+<DOCTYPE html>
+    <head>
+        <title>
+            Lesson-15  Supporting Geolocation
+        </title>
+
+    </head>
+
+    <body>
+        <h1>Lesson-15   Supporting Geolocation</h1>
+        <ul>
+            <li>Geolocation is also being used more and more to try to sell you services by offering promotions in stores that are near to you and a little more benevolently in enabling you to know wheather friends are within your near vicinity.</li>
+            <li> <b> Accessing Geolocation with JavaScript:: </b>
+                <ol>
+                      <li> The geoloaction Property: when accessing geolocation property, is to determine wheather or not it is avaiable by testing the geolocation property : <br>
+                        <code> if (typeof navigator.geolocation == 'undefined') <br> { <br>
+                            alert("Sorry, no geolocation support")<br>
+                        } <br>else <br>{ <br>// geolocation code<br> }</code></li>
+                        <li> The getCurrentPosition() Function : once the browser supports geolocation, you may ask it for its current position using the getCurrentPosition() like this: <br> navigator.geolocation.getCurrentPosition(grantes,denied) </li>
+                        <li> A granted() function: example: <br> <code> function granted(position) <br> {
+                            <br> alert('you are at location:' +position.coords.latitude + ',' + position.coords.longitude) <br> }<br> </code></li>
+                            <li> A denied() Function: if the user has chosen not to allow the browser;s location data to be revealed to your code, then your denied() function will be called an an error code will be given to state. <br> <code> function denied(error) <br> { <br> var message <br> switch(error.code) <br> { <br> case1:message ='Permisson denied'; break <br>case2:message ='Postion Unavailable'; break <br> case3:message ='Operation Timed out'; break <br> case4:message ='unknown error'; break  <br> }<br> alert('Error with Geolocation' + message) <br> } </code></li>
+
+                </ol>
+            </li>
+            <li> IN THE REAL WORLD : displaying a google map of a user current location in a div tag  element based on coordinates returned by browser geolocation code</li>
+            This example will ask your browser for its location if it
+    supports this feature.<br><br>
+
+    <div id='status'></div>
+    <div id='map'></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script>
+      if (typeof navigator.geolocation == 'undefined')
+         alert("Geolocation not supported.")
+      else
+        navigator.geolocation.getCurrentPosition(granted, denied)
+
+      function granted(position)
+      {
+        // Uncomment below to popup the location
+         alert("You are at location: "
+          + position.coords.latitude + ","
+           + position.coords.longitude)
+
+        O('status').innerHTML = 'Permission Granted'
+        S('map').border       = '1px solid black'
+        S('map').width        = '640px'
+        S('map').height       = '320px'
+
+        var lat  = position.coords.latitude
+        var long = position.coords.longitude
+
+        // Uncomment the following to focus on the Statue of Liberty
+         //var lat  = 40.689167
+        // var long = -74.044444
+
+        var gmap  = O('map')
+        var gopts =
+        {
+          center: new google.maps.LatLng(lat, long),
+          zoom: 10, mapTypeId: google.maps.MapTypeId.SATELLITE
+        }
+        var map = new google.maps.Map(gmap, gopts)
+      }
+
+      function denied(error)
+      {
+        var message
+
+        switch(error.code)
+        {
+          case 1: message = 'Permission Denied';    break
+          case 2: message = 'Position Unavailable'; break
+          case 3: message = 'Operation Timed Out';  break
+          case 4: message = 'Unknown Error';        break
+        }
+
+        // Uncomment below to popup the message
+        // alert("Error with Geolocation: " + message)
+
+        O('status').innerHTML = message
+      }
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+        </ul>
+    </body>
