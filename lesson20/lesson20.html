@@ -1,0 +1,208 @@
+<!-- Lesson-20 Working with Microdata, Web Workers and Web Applications-->
+<html manifest='clock.appcache'>
+    <head>
+        <title>
+        Lesson-20 Working with Microdata, Web Workers and Web Applications
+        </title>
+        <style>
+      #dest {
+        background:lightblue;
+        border    :1px solid #444;
+        width     :320px;
+        height    :100px;
+        padding   :10px;
+      }
+    </style>
+    <script src='clock.js'></script>
+    <link rel='stylesheet' href='clock.css'>
+
+    </head>
+
+    <body>
+        <h1> Lesson-20 Working with Microdata, Web Workers and Web Applications</h1>
+        <h2>1. Microdata</h2>
+        <ul>
+        <li>It is a subset of HTML designed for making a document have meaning to machines by providing metadata, just as it has meaning to a reader of the document.</li>
+        <li>What it does is make avaiable the following new tag attributes: itemscope, itemtype, itemid, itemprop.</li>
+        <li>You can define the properties of an item such as book, providing a range of information that a computer can use to understand, for example its authors,publishers,contents and so on.</li>
+        </ul>
+        <section
+      itemscope itemtype='http://data-vocabulary.org/Person'>
+
+      <img itemprop='photo' src='robin.jpg'
+        alt='Robin Nixon' align='left' style='margin-right:10px'>
+
+      <h2 itemprop='name'>Robin Nixon</h2>
+
+      <p>I am a <span itemprop='role'>Book Author</span>, and
+        online <span itemprop='title'>Instructor</span>.
+        Some people call me <span itemprop='nickname'>Rob</span>,
+        and my website is: <a itemprop='url'
+        href='http://robinnixon.com'>robinnixon.com</a>.
+
+        My address is:</p>
+
+      <address
+        itemscope itemtype='http://data-vocabulary.org/Address'
+        itemprop='address'>
+
+        <span itemprop='street-address'>123 My Street</span>,
+        <span itemprop='locality'>Anytown</span>,
+        <span itemprop='region'>Anystate</span>,
+        <span itemprop='postal-code'>AB12 3CD</span>,
+        <span itemprop='country-name'>Great Britain</span>.
+
+      </address>
+    </section>
+    <!-- you can test whether a browser supports it or not using following code:-->
+    <script>
+      if (!!document.getItems)
+      {
+        data = document.getItems('http://data-vocabulary.org/Person')[0]
+        alert(data.properties['title'][0].textContent)
+      }
+      else alert("Microdata not supported")
+    </script>
+<br><br><br><br><br><br><br><br><br>
+<h4>Web Workers</h4>
+<ul>
+    <li>It provide a standard way for browser to run multiple Javscript threads in the background that can pass messages to each other, in such a manner as the threads running in an opearting system.</li>
+    <li>You simply call up a new worker script which will sit there in the background waiting for messages to be sent to it, which it will then act upon.</li>
+    <li>The aim is this is to achieve a speed increase of two or three times over regular background Javascripts, although getting to grips with programming them is likely to require a longer rather than shorter learning curve.</li>
+</ul>
+<!-- to find out if a browser support web workers: -->
+<script>
+if(!!window.Worker)
+    alert("Web workers supported")
+else alert("Web Workers not supported")
+</script>
+
+<!-- once you determine that the browser will use them, then you can run code such as the following, which calculates prime numbers in the background -->
+ <p>The highest prime number discovered so far is:
+      <output id='result'></output></p>
+    <script>
+      var worker = new Worker('worker.js')
+
+      worker.onmessage = function (event)
+      {
+        document.getElementById('result').innerHTML = event.data;
+      }
+    </script>
+    <!-- The script display some text and creates an element with the id of result into which the highest prime number found so far is continuously written. this is achieved by creating the new object called woker by calling Worker() function passing it the name of an external javascript file called worker.js. The onmessage event of worker object is then attached to by an anonymous function. This triggers only when there is a new message to display the code that is called copies of data in event.data into the innerHTML property of the result element. after the code exits, it will not be called again until another message is ready to display.-->
+
+    <!-- The code that does the prime number calculation is saved separately int he worker.js and looks like this: -->
+<h4> Offline web Applications</h4>
+<ul>
+    <li>The idea of offline web applications is that once you visit a website, the website tells your browser about all the files it uses so that the browser can download locally, even without an Internet connection.</li>
+    <li>Offline Web Applications require a web server to setup with the correct MIME types in order for a browser that understands offline web applications to make use of the feature and fetch the files it needs.</li>
+    <li>if you are using web server that is not Apache, consult your manuals for how to add the text/cache-manifest MIME type in order for your server to send the manifest file using the correct type.</li>
+    <li>shortcut is to crate a file called .htaccess in the same folder as the files to be made available offline with the following content: <br> AddType text/cache-manifest .appcache</li>
+    <li> here how offline apps work. You start with a manifest file that contains all the files you like to offer for offline use, like the following, which is saved with the filename clock.appcache:
+        <ul>
+         <li> CACHE MANIFEST</li>
+         <li> clock.htm</li>
+         <li>clock.css</li>
+         <li>clock.js</li>
+        </ul>
+    </li>
+</ul>
+<p>The time is: <output id='clock'></output></p>
+<!--
+1. clock.appache file:
+CACHE MANIFEST
+clock.htm
+clock.css
+clock.js
+
+2. clock.htm
+
+<html manifest='clock.appcache'>
+  <head>
+    <title>Offline Web Apps</title>
+    <script src='clock.js'></script>
+    <link rel='stylesheet' href='clock.css'>
+  </head>
+  <body>
+    <p>The time is: <output id='clock'></output></p>
+  </body>
+</html>
+
+3. clock.css
+
+output { font-weight:bold; }
+
+4. clock.js
+
+setInterval(function ()
+{
+  document.getElementById('clock').innerHTML = new Date()
+}, 1000)
+    -->
+<h4> Drag and Drop</h4>
+<ul>
+<li> You can support dragging and dropping of objects on a web page by setting up event handlers for the ondragstart,ondragover and ondrop events.</li>
+</ul>
+<div id='dest' ondrop='drop(event)' ondragover='allow(event)'></div><br>
+    Drag the image below into the above element<br><br>
+    <img id='source' src='ball.gif' draggable='true' ondragstart='drag(event)'>
+
+    <script>
+      function allow(event)
+      {
+        event.preventDefault()
+      }
+
+      function drag(event)
+      {
+        event.dataTransfer.setData('image/png', event.target.id)
+      }
+
+      function drop(event)
+      {
+        event.preventDefault()
+        var data=event.dataTransfer.getData('image/png')
+        event.target.appendChild(document.getElementById(data))
+      }
+    </script>
+
+<!--
+<html>
+  <head>
+    <title>Drag and Drop</title>
+    <style>
+      #dest {
+        background:lightblue;
+        border    :1px solid #444;
+        width     :320px;
+        height    :100px;
+        padding   :10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='dest' ondrop='drop(event)' ondragover='allow(event)'></div><br>
+    Drag the image below into the above element<br><br>
+    <img id='source' src='ball.gif' draggable='true' ondragstart='drag(event)'>
+
+    <script>
+      function allow(event)
+      {
+        event.preventDefault()
+      }
+
+      function drag(event)
+      {
+        event.dataTransfer.setData('image/png', event.target.id)
+      }
+
+      function drop(event)
+      {
+        event.preventDefault()
+        var data=event.dataTransfer.getData('image/png')
+        event.target.appendChild(document.getElementById(data))
+      }
+    </script>
+
+  -->
+    </body>
+    </html>
