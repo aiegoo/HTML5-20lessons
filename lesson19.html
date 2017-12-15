@@ -1,0 +1,87 @@
+<!-- Lesson-19 Displaying Video-->
+<DOCTYPE html>
+    <head>
+        <title>
+        Lesson-19 Displaying Video
+        </title>
+
+    </head>
+
+    <body>
+        <h1> Lesson-19 Displaying Video</h1>
+        <h2>The Video Codecs</h2>
+        <ul>
+            <li>MP4</li>
+            <li>OGG</li>
+            <li>WebM</li>
+        </ul>
+        <p> In HTML5, video tag there are currently a number of different sets of codecs available</p>
+        <ul>
+         <li> H.264</li>
+         <li>Theora</li>
+         <li> VP8</li>
+        </ul>
+        <p> The following list details the majot OS and browsers along with the video containers and video types they support by default</p>
+        <ul>
+         <li> Apple iOS- MP4/H.264</li>
+         <li>Apple Safari- MP4/H.264</li>
+         <li> Google Android 2.3+ - MP4, OGG, WebM/H.264,Theora,VP8</li>
+         <li> Google Chrome - MP4, OGG, WebM/H.264,Theora,VP8</li>
+         <li> Internet Explorer - MP4/H.264</li>
+         <li>Mozilla Firefox - MP4, OGG, WebM/H.264,Theora,VP8</li>
+         <li> Opera - OGG, WebM/Theora, VP8</li>
+        </ul>
+        <h4> The video and source Tags</h4>
+
+        <video width='560' height='320' id='player' controls>
+            <source src='video/video.mp4'  type='video/mp4' >
+     <source src='video/video.webm' type='video/webm'>
+     <source src='video/video.ogv'  type='video/ogg' >
+        </video>
+        <h4> The video and source Tag Attributes</h4>
+        <ul>
+          <li> autoplay</li>
+          <li>controls</li>
+          <li>height</li>
+          <li>loop</li>
+          <li>poster</li>
+          <li>preload</li>
+          <li>src</li>
+          <li>type</li>
+          <li>width</li>
+        </ul>
+<video width='560' height='320' id='player' controls>
+      <object width='560' height='320' type='application/x-shockwave-flash'
+        data='video/flowplayer.swf'>
+        <param name='movie'     value='flowplayer.swf'>
+        <param name='flashvars' value='config={"clip": {"url":
+          "http://robinnixon.com/media/video.mp4",
+          "autoPlay":false, "autoBuffering":true}}'>
+     </object>
+     <button id='b1'>Play</button>
+    <button id='b2'>Pause</button>
+
+    <script>
+      O('b1').onclick = function()
+      {
+        O('player').play()
+      }
+
+      O('b2').onclick = function()
+      {
+        O('player').pause()
+      }
+
+      function O(obj)
+      {
+        if (typeof obj == 'object') return obj
+        else return document.getElementById(obj)
+      }
+
+      function S(obj)
+      {
+        return O(obj).style
+      }
+    </script>
+    </body>
+    </html>
